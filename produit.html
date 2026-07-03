@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="commun.css">
+<link rel="stylesheet" href="commun.css?v=2">
 <style>
 .page-produit{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:30px 0 50px}
 .galerie{background:linear-gradient(135deg,#eef2e4,#dde7cf);border-radius:20px;min-height:380px;display:flex;align-items:center;justify-content:center;color:var(--vert-clair);position:sticky;top:130px;align-self:start}
@@ -99,9 +99,9 @@ table.carac tr:last-child td{border-bottom:none}
   <p class="ariane"><a href="index.html">Accueil</a><span class="sep">›</span><a href="rayon.html">Chiens</a><span class="sep">›</span><span>Croquettes adulte 12 kg</span></p>
 
   <div class="page-produit">
-    <div class="galerie">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 38V22l14-10 14 10v16H10Z"/><path d="M20 38v-9h8v9"/><path d="M14 28c2-1 4-1 6 0m8 0c2-1 4-1 6 0"/></svg>
-      <span class="legende">Photo du produit réel à intégrer — visuel de démonstration</span>
+    <div class="galerie" style="padding:0;overflow:hidden">
+      <img src="assets/u-chien.webp" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:20px">
+      <span class="legende" style="background:rgba(255,253,248,.85);padding:4px 12px;border-radius:8px">Photo d'illustration — le packshot du produit réel sera intégré</span>
     </div>
 
     <div class="fiche">

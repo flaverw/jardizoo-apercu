@@ -8,33 +8,55 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="commun.css">
+<link rel="stylesheet" href="commun.css?v=2">
 <style>
-/* — héros : le semis — */
-.heros{background:linear-gradient(180deg,var(--vert-fonce) 0%,var(--vert) 100%);color:var(--ivoire);overflow:hidden;position:relative}
-.heros-int{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:64px 0 72px}
-.heros h1{color:var(--ivoire);font-size:clamp(30px,4.6vw,46px);margin-bottom:18px}
+/* — héros photo : la serre au matin — */
+.heros{position:relative;color:var(--ivoire);overflow:hidden;background:var(--vert-fonce)}
+.heros .fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.heros .voile{position:absolute;inset:0;background:linear-gradient(100deg,rgba(18,55,35,.88) 0%,rgba(18,55,35,.62) 42%,rgba(18,55,35,.18) 100%)}
+.heros-int{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:86px 0 96px}
+.heros h1{color:var(--ivoire);font-size:clamp(30px,4.6vw,48px);margin-bottom:16px;text-shadow:0 2px 18px rgba(0,0,0,.25)}
 .heros h1 em{font-style:italic;color:#cfe3b8}
-.heros p.sous{font-size:17px;color:#dbe7cc;max-width:46ch;margin-bottom:28px}
-.heros .filet-germe{display:block;margin:14px 0 0}
+.heros p.sous{font-size:17px;color:#e4ecd8;max-width:46ch;margin-bottom:28px;text-shadow:0 1px 10px rgba(0,0,0,.3)}
+.heros .filet-germe{display:block;margin:12px 0 0}
 .cta-groupe{display:flex;gap:14px;flex-wrap:wrap}
 .heros-preuves{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
-.preuve{font-size:13px;color:#c9d9b6;display:flex;align-items:center;gap:8px}
+.preuve{font-size:13px;color:#dbe7cc;display:flex;align-items:center;gap:8px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
 .preuve svg{width:16px;height:16px;flex:none}
-.semis-svg{width:100%;max-width:420px;margin:0 auto}
+.filet-germe path{stroke:var(--seve);stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:germer 1.6s .4s ease forwards}
+@keyframes germer{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){.filet-germe path{animation:none !important;stroke-dashoffset:0 !important}}
 
 /* — bandeau magasin / stock — */
 .bandeau-stock{background:var(--blanc);border-bottom:1px solid var(--filet)}
 .bandeau-stock-int{display:flex;align-items:center;gap:16px;padding:13px 0;font-size:14px;flex-wrap:wrap}
 .bandeau-stock select{font:inherit;font-size:14px;border:1.5px solid var(--filet);border-radius:8px;padding:6px 10px;background:var(--ivoire);color:var(--vert-fonce);font-weight:600;cursor:pointer}
 
-/* — rayons — */
-.grille-rayons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
-.rayon{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;padding:22px 16px;text-align:center;transition:transform .25s,box-shadow .25s;cursor:pointer}
-.rayon:hover{transform:translateY(-4px);box-shadow:var(--ombre)}
-.rayon .ico{width:46px;height:46px;margin:0 auto 12px;color:var(--vert)}
-.rayon b{display:block;font-size:14.5px;font-weight:600;color:var(--vert-fonce)}
-.rayon span{font-size:12px;color:var(--gris)}
+/* — univers en tuiles photo — */
+.grille-univers{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.univers{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;display:block;background:var(--vert-fonce);transition:transform .3s,box-shadow .3s}
+.univers:hover{transform:translateY(-4px);box-shadow:var(--ombre)}
+.univers img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.univers:hover img{transform:scale(1.045)}
+.univers .voile-u{position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(15,38,25,.82) 100%)}
+.univers .titre-u{position:absolute;left:16px;right:16px;bottom:13px;color:var(--ivoire)}
+.univers .titre-u b{display:block;font-family:'Fraunces',serif;font-size:19px;font-weight:500;letter-spacing:.01em}
+.univers .titre-u span{font-size:12px;color:#d5e2c3}
+.univers.offres-tuile{background:linear-gradient(135deg,var(--terre),#96522f);display:flex;align-items:center;justify-content:center;text-align:center}
+.univers.offres-tuile .titre-u{position:static;padding:16px}
+.univers.offres-tuile svg{width:38px;height:38px;margin:0 auto 10px;display:block;color:#f6dfc9}
+
+/* — situations (navigation par la vie du client) — */
+.situations{background:var(--blanc);border-top:1px solid var(--filet);border-bottom:1px solid var(--filet)}
+.grille-situations{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.situation{background:var(--ivoire);border:1px solid var(--filet);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.situation:hover{transform:translateY(-4px);box-shadow:var(--ombre)}
+.situation img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.situation .corps-s{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.situation h3{font-size:20px}
+.situation p{font-size:13.5px;color:var(--gris);flex:1}
+.situation .kit{font-size:12.5px;color:var(--vert-fonce);background:#eaf0dd;border-radius:9px;padding:8px 12px}
+.situation .lien-s{font-size:13.5px;font-weight:600;color:var(--vert);display:inline-flex;align-items:center;gap:6px;margin-top:6px}
 
 /* — retrait 1h — */
 .retrait{background:var(--vert-fonce);color:var(--ivoire)}
@@ -45,6 +67,15 @@
 .etape::before{counter-increment:etape;content:counter(etape,decimal-leading-zero);font-family:'Fraunces',serif;font-size:15px;color:var(--seve);letter-spacing:.1em}
 .etape h3{color:var(--ivoire);font-size:18px;margin:10px 0 8px}
 .etape p{font-size:14px;color:#c9d9b6}
+
+/* — les ateliers — */
+.ateliers-grille{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.ateliers-grille img{border-radius:20px;width:100%;aspect-ratio:3/2;object-fit:cover;box-shadow:var(--ombre)}
+.liste-ateliers{display:grid;gap:12px}
+.atelier-item{background:var(--blanc);border:1px solid var(--filet);border-radius:14px;padding:15px 18px;display:flex;gap:13px;align-items:flex-start}
+.atelier-item svg{width:20px;height:20px;flex:none;color:var(--vert);margin-top:2px}
+.atelier-item b{font-size:14.5px;display:block;color:var(--vert-fonce)}
+.atelier-item p{font-size:13px;color:var(--gris)}
 
 /* — paiement — */
 .paiement-cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
@@ -69,33 +100,20 @@
 .magasin p{font-size:13.5px;color:var(--gris);margin-bottom:4px}
 .magasin .ouvert{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--vert);font-weight:600;margin-top:10px}
 
-@media (prefers-reduced-motion: reduce){
-  .semis-svg .tige,.semis-svg .feuille,.filet-germe path{animation:none !important;stroke-dashoffset:0 !important;opacity:1 !important}
-}
-
-/* — le semis (signature) — */
-.semis-svg .tige{fill:none;stroke:#cfe3b8;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:germer 2.2s cubic-bezier(.4,0,.2,1) forwards}
-.semis-svg .tige.t2{animation-delay:.5s}
-.semis-svg .tige.t3{animation-delay:1s}
-.semis-svg .feuille{fill:#7fae62;opacity:0;transform-origin:center;animation:eclore .6s ease forwards}
-@keyframes germer{to{stroke-dashoffset:0}}
-@keyframes eclore{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
-.filet-germe path{stroke:var(--seve);stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:germer 1.6s .4s ease forwards}
-
 @media (max-width:860px){
-  .heros-int{grid-template-columns:1fr;padding:44px 0 52px}
-  .semis-svg{max-width:300px}
+  .heros-int{grid-template-columns:1fr;padding:56px 0 62px}
+  .ateliers-grille{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement.</div>
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement. Photos d'illustration.</div>
 
 <header>
   <div class="conteneur">
     <div class="entete-haut">
-      <a class="logo" href="#" aria-label="Jardizoo">
+      <a class="logo" href="index.html" aria-label="Jardizoo">
         <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
         Jardizoo
       </a>
@@ -115,22 +133,24 @@
     <nav class="rayons-nav" aria-label="Rayons">
       <ul>
         <li><a href="rayon.html">Chiens</a></li>
-        <li><a href="#rayons">Chats</a></li>
-        <li><a href="#rayons">Oiseaux</a></li>
-        <li><a href="#rayons">Rongeurs</a></li>
-        <li><a href="#rayons">Reptiles</a></li>
-        <li><a href="#rayons">Poissons</a></li>
-        <li><a href="#rayons">Basse-cour</a></li>
-        <li><a href="#rayons">Bassins de jardin</a></li>
-        <li><a href="#rayons">Jardinerie</a></li>
-        <li><a href="#rayons" class="offres">Bonnes offres</a></li>
+        <li><a href="#univers">Chats</a></li>
+        <li><a href="#univers">Oiseaux</a></li>
+        <li><a href="#univers">Rongeurs</a></li>
+        <li><a href="#univers">Reptiles</a></li>
+        <li><a href="#univers">Poissons</a></li>
+        <li><a href="#univers">Basse-cour</a></li>
+        <li><a href="#univers">Bassins de jardin</a></li>
+        <li><a href="#univers">Jardinerie</a></li>
+        <li><a href="#univers" class="offres">Bonnes offres</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- HÉROS -->
+<!-- HÉROS : la serre au matin -->
 <div class="heros">
+  <img class="fond" src="assets/hero.webp" alt="" fetchpriority="high">
+  <div class="voile" aria-hidden="true"></div>
   <div class="conteneur heros-int">
     <div>
       <h1>Vos magasins,<br>leurs rayons, <em>leur stock</em> —<br>enfin en ligne.</h1>
@@ -138,7 +158,7 @@
       <p class="sous">Jardizoo, c'est d'abord des magasins — des allées de plantes, des aquariums, des conseils au comptoir. Ce site les prolonge : vous voyez ce qui est en rayon près de chez vous, vous réservez, vous retirez en magasin.</p>
       <div class="cta-groupe">
         <a class="btn btn-plein" href="#retrait"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Retrait en magasin dès 1 h</a>
-        <a class="btn btn-ligne" href="#rayons">Parcourir les rayons</a>
+        <a class="btn btn-ligne" href="#univers">Parcourir les rayons</a>
       </div>
       <div class="heros-preuves">
         <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/></svg>Des magasins dans les Hauts-de-France</span>
@@ -146,20 +166,7 @@
         <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Stock affiché magasin par magasin</span>
       </div>
     </div>
-    <!-- signature « le semis » : trois tiges single-line qui germent -->
-    <svg class="semis-svg" viewBox="0 0 320 300" aria-hidden="true">
-      <path d="M10 268 H310" stroke="rgba(240,240,220,.35)" stroke-width="2" stroke-linecap="round"/>
-      <path class="tige" pathLength="1" d="M90 268 C 88 230, 96 200, 88 168"/>
-      <ellipse class="feuille" style="animation-delay:1.5s" cx="72" cy="180" rx="16" ry="7" transform="rotate(-32 72 180)"/>
-      <ellipse class="feuille" style="animation-delay:1.7s" cx="103" cy="166" rx="16" ry="7" transform="rotate(26 103 166)"/>
-      <path class="tige t2" pathLength="1" d="M170 268 C 174 214, 162 170, 172 118"/>
-      <ellipse class="feuille" style="animation-delay:2s" cx="152" cy="140" rx="19" ry="8" transform="rotate(-30 152 140)"/>
-      <ellipse class="feuille" style="animation-delay:2.2s" cx="190" cy="122" rx="19" ry="8" transform="rotate(28 190 122)"/>
-      <ellipse class="feuille" style="animation-delay:2.4s" cx="171" cy="106" rx="8" ry="15" transform="rotate(2 171 106)"/>
-      <path class="tige t3" pathLength="1" d="M250 268 C 248 240, 256 218, 250 196"/>
-      <ellipse class="feuille" style="animation-delay:2.5s" cx="236" cy="206" rx="13" ry="6" transform="rotate(-30 236 206)"/>
-      <ellipse class="feuille" style="animation-delay:2.7s" cx="262" cy="196" rx="13" ry="6" transform="rotate(26 262 196)"/>
-    </svg>
+    <div></div>
   </div>
 </div>
 
@@ -180,36 +187,74 @@
   </div>
 </div>
 
-<!-- RAYONS -->
-<section id="rayons">
+<!-- UNIVERS EN TUILES PHOTO -->
+<section id="univers">
   <div class="conteneur">
     <p class="sur-titre apparait">Les rayons</p>
     <h2 class="titre-section apparait">Les mêmes univers qu'en magasin</h2>
     <p class="intro-section apparait">Neuf univers, les mêmes qu'entre les allées. Les animaux, eux, ne se vendent pas en ligne : ils se rencontrent en magasin, avec les conseils de l'équipe.</p>
-    <div class="grille-rayons">
-      <a class="rayon apparait" href="rayon.html"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 28c-3 0-5-3-5-6s2-5 4-5c1-4 4-7 8-7 3 0 5 1 7 3 5 0 9 4 9 9 0 4-3 6-6 6"/><path d="M16 40c2-6 5-9 8-9s6 3 8 9"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/><circle cx="29" cy="20" r="1.6" fill="currentColor"/></svg><b>Chiens</b><span>Croquettes, couchage, jeux</span></a>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20 9 10l8 4c2-1 4-1 7-1s5 0 7 1l8-4-3 10c1 2 2 5 2 8 0 8-6 12-14 12S10 36 10 28c0-3 1-6 2-8Z"/><circle cx="19" cy="26" r="1.6" fill="currentColor"/><circle cx="29" cy="26" r="1.6" fill="currentColor"/></svg><b>Chats</b><span>Alimentation, litière, arbres</span></div>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M30 12c-8 0-13 6-13 13v11l-7 2h22c6 0 10-5 10-11 0-8-5-15-12-15Z"/><circle cx="31" cy="19" r="1.6" fill="currentColor"/><path d="M42 17l-5 2"/></svg><b>Oiseaux</b><span>Graines, cages, volières</span></div>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M34 22c4 0 7 3 7 7s-3 7-8 7H15c-4 0-7-3-7-6 0-4 3-6 6-6 0-6 5-11 11-11 5 0 9 4 9 9Z"/><circle cx="31" cy="26" r="1.5" fill="currentColor"/><path d="M40 34c2 1 3 3 3 5"/></svg><b>Rongeurs</b><span>Foin, cages, hygiène</span></div>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 30c6-8 14-12 22-10 6 1 10 5 10 9 0 3-3 6-8 6-9 1-18 0-24-5Z"/><path d="M14 26c-2-3-2-6 0-9 3 1 5 3 6 6"/><circle cx="33" cy="27" r="1.5" fill="currentColor"/></svg><b>Reptiles</b><span>Terrariums, chauffage, UV</span></div>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 24c5-7 12-10 18-10s11 3 14 10c-3 7-8 10-14 10s-13-3-18-10Z"/><path d="M40 24l-6-6m6 6-6 6"/><circle cx="18" cy="23" r="1.6" fill="currentColor"/></svg><b>Poissons</b><span>Aquariums, filtration, soins</span></div>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 34c-7 0-12-5-12-11 0-5 4-9 8-9 1-3 3-5 6-5s6 2 7 6c4 1 7 4 7 8 0 6-6 11-16 11Z"/><path d="M20 34v6m8-6v6"/><circle cx="27" cy="17" r="1.5" fill="currentColor"/></svg><b>Basse-cour</b><span>Poulaillers, aliments</span></div>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 34h32M12 34c0-8 5-14 12-14s12 6 12 14"/><path d="M24 20v-8m0 0c-3 0-5-2-5-5 3 0 5 2 5 5Zm0 0c3 0 5-2 5-5-3 0-5 2-5 5Z"/></svg><b>Bassins de jardin</b><span>Pompes, bâches, poissons</span></div>
-      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 40V22"/><path d="M24 26c-8 0-13-6-13-14 8 0 13 6 13 14Z"/><path d="M24 20c8 0 13-6 13-14-8 0-13 6-13 14Z"/><path d="M14 40h20"/></svg><b>Jardinerie</b><span>Plantes, terreau, outillage</span></div>
-      <div class="rayon apparait" style="border-color:var(--terre)"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#b5643a" stroke-width="2"><path d="M8 20h32v6c0 9-7 14-16 14S8 35 8 26v-6Z"/><path d="M8 20l4-10h24l4 10M24 10v10"/></svg><b style="color:var(--terre)">Bonnes offres</b><span>Arrivages et fins de série</span></div>
+    <div class="grille-univers">
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-chien.webp" alt="Chien" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Chiens</b><span>Croquettes, couchage, promenade</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-chat.webp" alt="Chat" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Chats</b><span>Alimentation, litière, arbres</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-oiseaux.webp" alt="Oiseaux" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Oiseaux</b><span>Graines, cages, volières</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-rongeurs.webp" alt="Rongeurs" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Rongeurs</b><span>Foin, cages, hygiène</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-reptiles.webp" alt="Reptiles" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Reptiles</b><span>Terrariums, chauffage, UV</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-poissons.webp" alt="Poissons" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Poissons</b><span>Aquariums, filtration, soins</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-bassecour.webp" alt="Basse-cour" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Basse-cour</b><span>Poulaillers, aliments</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-bassin.webp" alt="Bassins de jardin" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Bassins de jardin</b><span>Pompes, bâches, plantes d'eau</span></span></a>
+      <a class="univers apparait" href="rayon.html"><img src="assets/u-jardinerie.webp" alt="Jardinerie" loading="lazy"><span class="voile-u"></span><span class="titre-u"><b>Jardinerie</b><span>Plantes, terreau, outillage</span></span></a>
+      <a class="univers offres-tuile apparait" href="rayon.html"><span class="titre-u"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 20h32v6c0 9-7 14-16 14S8 35 8 26v-6Z"/><path d="M8 20l4-10h24l4 10M24 10v10"/></svg><b>Bonnes offres</b><span>Arrivages et fins de série</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SELON VOTRE SITUATION -->
+<section class="situations">
+  <div class="conteneur">
+    <p class="sur-titre apparait">Par où commencer</p>
+    <h2 class="titre-section apparait">Dites-nous où vous en êtes</h2>
+    <p class="intro-section apparait">On ne cherche pas toujours un produit — on vit un moment. Trois entrées parmi celles qu'on entend chaque semaine au comptoir, avec le nécessaire composé sur le stock réel de votre magasin.</p>
+    <div class="grille-situations">
+      <div class="situation apparait">
+        <img src="assets/sit-chiot.webp" alt="" loading="lazy">
+        <div class="corps-s">
+          <h3>Un chiot arrive à la maison</h3>
+          <p>Les premières semaines se préparent : le couchage, la gamelle, l'alimentation de son âge, le collier à sa taille.</p>
+          <span class="kit">Le kit premier chiot — composé avec le stock d'Illies, à réserver en une fois.</span>
+          <a class="lien-s" href="rayon.html">Voir le nécessaire →</a>
+        </div>
+      </div>
+      <div class="situation apparait">
+        <img src="assets/sit-balcon.webp" alt="" loading="lazy">
+        <div class="corps-s">
+          <h3>Un balcon à l'ombre</h3>
+          <p>Il existe des plantes faites pour ça. On les classe par lumière, taille et entretien — pas par nom latin.</p>
+          <span class="kit">Fougères, hostas, terreau et bacs — la sélection ombre du moment, en magasin.</span>
+          <a class="lien-s" href="rayon.html">Voir la sélection →</a>
+        </div>
+      </div>
+      <div class="situation apparait">
+        <img src="assets/sit-aquarium.webp" alt="" loading="lazy">
+        <div class="corps-s">
+          <h3>Un premier aquarium</h3>
+          <p>Cuve, filtration, substrat, plantes, puis les semaines de patience avant les premiers poissons — dans cet ordre.</p>
+          <span class="kit">Le kit de démarrage complet, et les conseils du rayon aquariophilie au retrait.</span>
+          <a class="lien-s" href="rayon.html">Voir le kit →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PRODUITS DÉMO -->
-<section style="padding-top:0">
+<section>
   <div class="conteneur">
     <p class="sur-titre apparait">En rayon près de chez vous</p>
     <h2 class="titre-section apparait">Le stock de votre magasin, sans surprise</h2>
     <p class="intro-section apparait">Chaque fiche indique la disponibilité réelle dans le magasin que vous avez choisi. Ce que vous réservez est mis de côté à votre nom.</p>
     <div class="grille-produits">
       <article class="produit apparait">
-        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 38V22l14-10 14 10v16H10Z"/><path d="M20 38v-9h8v9"/></svg></div>
+        <div class="visuel" style="padding:0"><img src="assets/u-chien.webp" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="corps">
           <span class="marque">Alimentation chien</span>
           <h3><a href="produit.html">Croquettes adulte 12 kg</a></h3>
@@ -219,33 +264,33 @@
         </div>
       </article>
       <article class="produit apparait">
-        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="14" width="32" height="22" rx="3"/><path d="M8 22h32M14 30h6"/></svg></div>
+        <div class="visuel" style="padding:0"><img src="assets/u-poissons.webp" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="corps">
           <span class="marque">Aquariophilie</span>
-          <h3>Aquarium équipé 120 L</h3>
+          <h3><a href="produit.html">Aquarium équipé 120 L</a></h3>
           <p class="prix">111 €<small> — exemple</small></p>
           <p class="stock-ligne faible"><span class="pastille"></span>Plus que 2 à <span class="ou-magasin">Illies</span></p>
-          <button class="btn">Réserver — retrait 1 h</button>
+          <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
         </div>
       </article>
       <article class="produit apparait">
-        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 40V20"/><path d="M24 26c-7 0-12-5-12-12 7 0 12 5 12 12Zm0-6c7 0 12-5 12-12-7 0-12 5-12 12Z"/><path d="M15 40h18"/></svg></div>
+        <div class="visuel" style="padding:0"><img src="assets/u-jardinerie.webp" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="corps">
           <span class="marque">Jardinerie</span>
-          <h3>Terreau plantation 50 L</h3>
+          <h3><a href="produit.html">Terreau plantation 50 L</a></h3>
           <p class="prix">5,5 €<small> — exemple</small></p>
           <p class="stock-ligne"><span class="pastille"></span>En stock à <span class="ou-magasin">Illies</span> — 60 sacs</p>
-          <button class="btn">Réserver — retrait 1 h</button>
+          <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
         </div>
       </article>
       <article class="produit apparait">
-        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 36c0-9 5-16 12-16s12 7 12 16H12Z"/><path d="M24 20v-6m-6 22h12"/></svg></div>
+        <div class="visuel" style="padding:0"><img src="assets/u-bassecour.webp" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="corps">
           <span class="marque">Basse-cour</span>
-          <h3>Poulailler 4 poules</h3>
+          <h3><a href="produit.html">Poulailler 4 poules</a></h3>
           <p class="prix">222 €<small> — exemple</small></p>
           <p class="stock-ligne epuise"><span class="pastille"></span>Épuisé ici — en stock à Hénin-Beaumont</p>
-          <button class="btn indispo">Voir dans un autre magasin</button>
+          <a class="btn indispo" href="produit.html">Voir dans un autre magasin</a>
         </div>
       </article>
     </div>
@@ -266,8 +311,30 @@
   </div>
 </section>
 
-<!-- PAIEMENT -->
+<!-- LES ATELIERS -->
 <section>
+  <div class="conteneur">
+    <p class="sur-titre apparait">Les gestes du magasin</p>
+    <h2 class="titre-section apparait">Ce que les mains d'ici savent faire</h2>
+    <p class="intro-section apparait">Un magasin, ce n'est pas que des rayons : ce sont des gestes. Exemples de services à composer avec l'enseigne — réservables en ligne, réalisés au comptoir.</p>
+    <div class="ateliers-grille">
+      <img class="apparait" src="assets/atelier.webp" alt="Rempotage à l'établi du magasin" loading="lazy">
+      <div class="liste-ateliers">
+        <div class="atelier-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-8m0 2c-4 0-6.5-2.8-6.5-7C9.5 7 12 9.8 12 14Zm0-3c4 0 6.5-2.8 6.5-7-4 0-6.5 2.8-6.5 7Z"/><path d="M7 20h10"/></svg>
+          <span><b>Le rempotage à l'établi</b><p>Votre plante repart dans son nouveau pot, préparée sur place pendant que vous faites vos allées.</p></span></div>
+        <div class="atelier-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2.5"/></svg>
+          <span><b>La médaille gravée</b><p>Nom et numéro gravés sur la médaille de votre animal, prête au moment du retrait de votre commande.</p></span></div>
+        <div class="atelier-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c4-6 8-8 11-8 4 0 7 3 7 7 0 3-2 5-5 5-4 1-9 0-13-4Z"/></svg>
+          <span><b>Le rendez-vous aquariophilie</b><p>Un créneau au rayon pour préparer ou dépanner votre bac, avec le stock du magasin sous la main.</p></span></div>
+        <div class="atelier-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l1.5 13h-15L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+          <span><b>L'aide au chargement</b><p>Terreau, poulailler, aquarium : les charges lourdes portées jusqu'au coffre, à chaque passage.</p></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIEMENT -->
+<section style="padding-top:0">
   <div class="conteneur">
     <p class="sur-titre apparait">Le paiement</p>
     <h2 class="titre-section apparait">Clair avant, pendant et après</h2>
@@ -322,12 +389,12 @@
         <h4 style="font-family:'Fraunces',serif;font-size:20px">Jardizoo</h4>
         <p>L'animalerie et la jardinerie de vos magasins des Hauts-de-France, prolongées en ligne. Les animaux, eux, vous attendent en magasin.</p>
       </div>
-      <div><h4>Rayons</h4><ul><li><a href="#rayons">Chiens</a></li><li><a href="#rayons">Chats</a></li><li><a href="#rayons">Aquariophilie</a></li><li><a href="#rayons">Jardinerie</a></li></ul></div>
+      <div><h4>Rayons</h4><ul><li><a href="rayon.html">Chiens</a></li><li><a href="#univers">Chats</a></li><li><a href="#univers">Aquariophilie</a></li><li><a href="#univers">Jardinerie</a></li></ul></div>
       <div><h4>Pratique</h4><ul><li><a href="#retrait">Retrait en magasin</a></li><li><a href="#magasins">Nos magasins</a></li><li><a href="#">Livraison</a></li><li><a href="#">Contact</a></li><li><a href="gestion.html">Le Comptoir — démo gestion</a></li></ul></div>
       <div><h4>L'enseigne</h4><ul><li><a href="#">Qui sommes-nous</a></li><li><a href="#">Conditions de vente</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">Mentions légales</a></li></ul></div>
     </div>
     <div class="pied-bas">
-      <span>Maquette de démonstration — Everywhere Digital. Données et prix fictifs, formulaires inactifs.</span>
+      <span>Maquette de démonstration — Everywhere Digital. Données et prix fictifs, formulaires inactifs, photos d'illustration.</span>
       <span>Aucun suivi, aucun cookie.</span>
     </div>
   </div>
