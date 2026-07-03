@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Votre commande — Jardizoo (maquette de démonstration)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css">
+<style>
+.page-panier{padding:30px 0 64px;max-width:920px;margin:0 auto}
+.page-panier h1{font-size:clamp(24px,3.2vw,32px);margin-bottom:6px}
+.page-panier .sous-titre{color:var(--gris);font-size:14px;margin-bottom:26px}
+
+/* — jalons — */
+.jalons{display:flex;gap:0;margin-bottom:30px;counter-reset:jalon}
+.jalon{flex:1;text-align:center;position:relative;font-size:12.5px;color:var(--gris);padding-top:34px}
+.jalon::before{counter-increment:jalon;content:counter(jalon);position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:28px;border-radius:50%;background:var(--blanc);border:2px solid var(--filet);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;color:var(--gris);z-index:1}
+.jalon::after{content:'';position:absolute;top:13px;left:calc(-50% + 14px);right:calc(50% + 14px);height:2px;background:var(--filet)}
+.jalon:first-child::after{display:none}
+.jalon.fait{color:var(--vert)}
+.jalon.fait::before{background:var(--vert);border-color:var(--vert);color:#fff;content:'✓'}
+.jalon.fait::after{background:var(--seve)}
+.jalon.courant{color:var(--vert-fonce);font-weight:600}
+.jalon.courant::before{border-color:var(--vert);color:var(--vert)}
+
+/* — disposition — */
+.deux-colonnes{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:start}
+.colonne-etapes .carte,.recap{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;padding:24px}
+.recap{position:sticky;top:130px}
+.recap h2{font-size:16px;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:14px}
+.recap .ligne{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 0;border-bottom:1px solid var(--filet)}
+.recap .ligne small{color:var(--gris)}
+.recap .ligne.total{border-bottom:none;font-weight:700;font-size:16px;padding-top:12px}
+.recap .ligne.total .montant{font-family:'Fraunces',serif;font-size:22px;color:var(--vert-fonce)}
+.recap .mention{font-size:11.5px;color:var(--gris);margin-top:10px;font-style:italic}
+
+.etape-panneau{display:none}
+.etape-panneau.actif{display:block;animation:fondu .35s ease}
+@keyframes fondu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.etape-panneau h2{font-size:19px;margin-bottom:16px}
+
+/* — articles — */
+.article-panier{display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--filet)}
+.article-panier:last-of-type{border-bottom:none}
+.article-panier .mini{width:62px;height:62px;border-radius:12px;background:linear-gradient(135deg,#eef2e4,#dde7cf);display:flex;align-items:center;justify-content:center;color:var(--vert-clair);flex:none}
+.article-panier .mini svg{width:30px;height:30px}
+.article-panier b{font-size:14px;display:block}
+.article-panier small{color:var(--gris);font-size:12px}
+.article-panier .apx{margin-left:auto;text-align:right;font-family:'Fraunces',serif;font-size:17px;color:var(--vert-fonce);white-space:nowrap}
+.retirer{font-size:11.5px;color:var(--gris);text-decoration:underline;cursor:pointer}
+
+/* — options / formulaires — */
+.option{display:flex;gap:13px;border:1.5px solid var(--filet);border-radius:14px;padding:16px;margin-bottom:12px;cursor:pointer;align-items:flex-start;background:var(--ivoire)}
+.option:hover{border-color:var(--seve)}
+.option.choisie{border-color:var(--vert);background:#f0f4e8}
+.option input{margin-top:4px;accent-color:var(--vert)}
+.option b{font-size:14.5px;display:block}
+.option p{font-size:12.5px;color:var(--gris);margin-top:2px}
+.option .cout{margin-left:auto;font-weight:600;font-size:13.5px;color:var(--vert-fonce);white-space:nowrap}
+.champ{margin-bottom:13px}
+.champ label{display:block;font-size:12.5px;font-weight:600;color:var(--vert-fonce);margin-bottom:5px}
+.champ input{width:100%;border:1.5px solid var(--filet);border-radius:10px;padding:11px 13px;font:inherit;font-size:14px;background:var(--ivoire)}
+.champ input:focus{outline:2px solid var(--seve);border-color:var(--seve)}
+.deux-champs{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.boutons-etape{display:flex;justify-content:space-between;gap:12px;margin-top:22px;flex-wrap:wrap}
+
+/* — confirmation — */
+.confirmation{text-align:center;padding:20px 10px}
+.confirmation .coche{width:64px;height:64px;border-radius:50%;background:#e4efdb;color:var(--vert);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.confirmation .coche svg{width:30px;height:30px}
+.confirmation h2{font-size:24px;margin-bottom:10px}
+.confirmation p{color:var(--gris);font-size:14.5px;max-width:48ch;margin:0 auto 8px}
+.confirmation .numero{font-family:'Fraunces',serif;font-size:18px;color:var(--vert-fonce);margin:14px 0}
+.note-demo{background:#fdf6e8;border:1px solid #eadfc0;border-radius:12px;padding:12px 16px;font-size:12.5px;color:#7a6428;margin-top:20px}
+
+@media (max-width:860px){
+  .deux-colonnes{grid-template-columns:1fr}
+  .recap{position:static;order:-1}
+  .jalon{font-size:10.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement.</div>
+
+<header>
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="logo" href="index.html" aria-label="Jardizoo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
+        Jardizoo
+      </a>
+      <div class="entete-actions" style="margin-left:auto">
+        <div class="mon-magasin">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1c4d33" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Mon magasin : <b>Illies</b>
+        </div>
+        <a class="action" href="rayon.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m15 18-6-6 6-6"/></svg><span>Continuer mes achats</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="conteneur">
+  <div class="page-panier">
+    <h1>Votre commande</h1>
+    <p class="sous-titre">Un seul parcours, quatre étapes, le montant complet toujours visible à droite. Parcours de démonstration : rien n'est réellement commandé ni payé.</p>
+
+    <div class="jalons" id="jalons">
+      <div class="jalon courant" data-j="1">Panier</div>
+      <div class="jalon" data-j="2">Retrait ou livraison</div>
+      <div class="jalon" data-j="3">Vos coordonnées</div>
+      <div class="jalon" data-j="4">Paiement</div>
+    </div>
+
+    <div class="deux-colonnes">
+      <div class="colonne-etapes">
+
+        <!-- Étape 1 : panier -->
+        <div class="carte etape-panneau actif" data-etape="1">
+          <h2>Votre panier</h2>
+          <div class="article-panier">
+            <span class="mini"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 38V22l14-10 14 10v16H10Z"/><path d="M20 38v-9h8v9"/></svg></span>
+            <span><b>Croquettes adulte 12 kg</b><small>1 × 33 € — exemple</small><br><span class="retirer">Retirer</span></span>
+            <span class="apx">33 €</span>
+          </div>
+          <div class="article-panier">
+            <span class="mini"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 24c4-8 10-12 14-12s10 4 14 12c-4 8-10 12-14 12s-10-4-14-12Z"/><path d="M17 20c2 3 2 5 0 8m14-8c-2 3-2 5 0 8"/></svg></span>
+            <span><b>Jouet corde à nœuds</b><small>1 × 5,5 € — exemple</small><br><span class="retirer">Retirer</span></span>
+            <span class="apx">5,5 €</span>
+          </div>
+          <div class="boutons-etape">
+            <a class="btn btn-discret" href="rayon.html">← Continuer mes achats</a>
+            <button class="btn btn-vert" data-va="2">Choisir le retrait →</button>
+          </div>
+        </div>
+
+        <!-- Étape 2 : retrait ou livraison -->
+        <div class="carte etape-panneau" data-etape="2">
+          <h2>Retrait ou livraison</h2>
+          <label class="option choisie">
+            <input type="radio" name="mode" checked>
+            <span><b>Retrait à Illies — votre magasin</b>
+            <p>Mis de côté à votre nom, souvent prêt sous une heure aux heures d'ouverture. Vous êtes prévenu par message.</p></span>
+            <span class="cout">Sans frais</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="mode">
+            <span><b>Retrait dans un autre magasin de l'enseigne</b>
+            <p>Louvroil, Hénin-Beaumont, Petite-Forêt, Saint-Pol-sur-Ternoise, Camon — selon le stock affiché.</p></span>
+            <span class="cout">Sans frais</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="mode">
+            <span><b>Livraison à domicile</b>
+            <p>Pour les articles expédiables. Le coût exact s'affiche ici, avant toute suite — jamais découvert au paiement.</p></span>
+            <span class="cout">6,6 € — exemple</span>
+          </label>
+          <div class="boutons-etape">
+            <button class="btn btn-discret" data-va="1">← Retour au panier</button>
+            <button class="btn btn-vert" data-va="3">Vos coordonnées →</button>
+          </div>
+        </div>
+
+        <!-- Étape 3 : coordonnées -->
+        <div class="carte etape-panneau" data-etape="3">
+          <h2>Vos coordonnées</h2>
+          <div class="deux-champs">
+            <div class="champ"><label for="c-prenom">Prénom</label><input id="c-prenom" type="text" autocomplete="given-name" placeholder="—"></div>
+            <div class="champ"><label for="c-nom">Nom</label><input id="c-nom" type="text" autocomplete="family-name" placeholder="—"></div>
+          </div>
+          <div class="champ"><label for="c-mel">Courriel — pour la confirmation et le « c'est prêt »</label><input id="c-mel" type="email" autocomplete="email" placeholder="vous@exemple.fr"></div>
+          <div class="champ"><label for="c-tel">Téléphone — uniquement si un souci de préparation l'exige</label><input id="c-tel" type="tel" autocomplete="tel" placeholder="06 — — — —"></div>
+          <p style="font-size:12px;color:var(--gris)">Pas de compte obligatoire. Ces coordonnées servent à cette commande ; elles ne sont ni revendues ni utilisées pour de la publicité.</p>
+          <div class="boutons-etape">
+            <button class="btn btn-discret" data-va="2">← Retour</button>
+            <button class="btn btn-vert" data-va="4">Vers le paiement →</button>
+          </div>
+        </div>
+
+        <!-- Étape 4 : paiement -->
+        <div class="carte etape-panneau" data-etape="4">
+          <h2>Paiement</h2>
+          <label class="option choisie">
+            <input type="radio" name="paiement" checked>
+            <span><b>Carte bancaire — paiement sécurisé</b>
+            <p>Débit à la préparation de la commande, pas avant. Confirmation écrite immédiate.</p></span>
+          </label>
+          <label class="option">
+            <input type="radio" name="paiement">
+            <span><b>Au comptoir, en retirant</b>
+            <p>Vous réservez sans payer en ligne ; vous réglez au retrait — carte ou espèces, comme en caisse.</p></span>
+          </label>
+          <p style="font-size:13px;color:var(--gris);margin:14px 2px">Vous payez <b style="color:var(--vert-fonce)">38,5 € — le montant affiché à droite, rien d'autre</b> : deux articles, retrait sans frais.</p>
+          <div class="boutons-etape">
+            <button class="btn btn-discret" data-va="3">← Retour</button>
+            <button class="btn btn-vert" data-va="5">Payer 38,5 € (démonstration) →</button>
+          </div>
+        </div>
+
+        <!-- Étape 5 : confirmation -->
+        <div class="carte etape-panneau" data-etape="5">
+          <div class="confirmation">
+            <span class="coche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <h2>Commande enregistrée</h2>
+            <p class="numero">N° W-1061 — retrait à Illies</p>
+            <p>Le magasin d'Illies prépare vos deux articles. Vous recevrez un message dès que la commande est prête — souvent sous une heure aux heures d'ouverture.</p>
+            <p>Le récapitulatif complet vient de partir par courriel : articles, montant réglé, adresse du magasin, et qui appeler si besoin.</p>
+            <div class="note-demo">Fin du parcours de démonstration — aucune commande n'a été passée, aucun paiement effectué, aucune donnée conservée.</div>
+            <div class="boutons-etape" style="justify-content:center">
+              <a class="btn btn-discret" href="index.html">Revenir à l'accueil</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- récapitulatif -->
+      <aside class="recap" id="recap">
+        <h2>Récapitulatif</h2>
+        <div class="ligne"><span>Croquettes adulte 12 kg <small>× 1</small></span><span>33 €</span></div>
+        <div class="ligne"><span>Jouet corde à nœuds <small>× 1</small></span><span>5,5 €</span></div>
+        <div class="ligne"><span>Retrait à Illies</span><span>Sans frais</span></div>
+        <div class="ligne total"><span>Total</span><span class="montant">38,5 €</span></div>
+        <p class="mention">Prix d'exemple. Le montant total est celui-ci, du panier au paiement — aucun frais découvert en route.</p>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="conteneur">
+    <div class="pied-bas" style="border:none;padding:0">
+      <span>Maquette de démonstration — Everywhere Digital. Données et prix fictifs, formulaires inactifs.</span>
+      <span>Aucun suivi, aucun cookie.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// parcours par étapes (démonstration — rien n'est envoyé nulle part)
+function aller(n){
+  document.querySelectorAll('.etape-panneau').forEach(p=>p.classList.toggle('actif',p.dataset.etape==String(n)));
+  document.querySelectorAll('.jalon').forEach(j=>{
+    const num=+j.dataset.j;
+    j.classList.toggle('fait',num<n);
+    j.classList.toggle('courant',num===n);
+  });
+  if(n===5)document.getElementById('jalons').querySelectorAll('.jalon').forEach(j=>{j.classList.add('fait');j.classList.remove('courant')});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-va]').forEach(b=>b.addEventListener('click',()=>aller(+b.dataset.va)));
+// surlignage des options radio
+document.querySelectorAll('.option input').forEach(r=>r.addEventListener('change',()=>{
+  document.querySelectorAll(`.option input[name="${r.name}"]`).forEach(x=>x.closest('.option').classList.toggle('choisie',x.checked));
+}));
+</script>
+</body>
+</html>

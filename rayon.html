@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Rayon Chiens — Jardizoo (maquette de démonstration)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css">
+<style>
+.page-rayon{display:grid;grid-template-columns:240px 1fr;gap:30px;padding:30px 0 64px}
+.filtres{align-self:start;position:sticky;top:120px}
+.bloc-filtre{background:var(--blanc);border:1px solid var(--filet);border-radius:14px;padding:18px;margin-bottom:14px}
+.bloc-filtre h3{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--vert-fonce);margin-bottom:12px}
+.bloc-filtre label{display:flex;align-items:center;gap:9px;font-size:13.5px;padding:5px 0;cursor:pointer;color:var(--encre)}
+.bloc-filtre input[type=checkbox]{accent-color:var(--vert);width:15px;height:15px}
+.bloc-filtre .compte{margin-left:auto;font-size:11.5px;color:var(--gris)}
+.tete-rayon{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.tete-rayon h1{font-size:clamp(26px,3.4vw,36px)}
+.tete-rayon .nb{font-size:13.5px;color:var(--gris)}
+.note-rayon{background:var(--blanc);border:1px solid var(--filet);border-left:4px solid var(--seve);border-radius:12px;padding:13px 16px;font-size:13.5px;color:var(--gris);margin-bottom:22px}
+.note-rayon b{color:var(--vert-fonce)}
+@media (max-width:860px){
+  .page-rayon{grid-template-columns:1fr}
+  .filtres{position:static;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bloc-filtre{margin-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement.</div>
+
+<header>
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="logo" href="index.html" aria-label="Jardizoo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
+        Jardizoo
+      </a>
+      <div class="recherche" role="search">
+        <input type="search" placeholder="Chercher un produit, une marque… (démo)" aria-label="Recherche">
+        <button aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </div>
+      <div class="entete-actions">
+        <div class="mon-magasin" title="Choisir mon magasin (démonstration)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1c4d33" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Mon magasin : <b>Illies</b>
+        </div>
+        <div class="action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6.5 8-6.5s8 2.5 8 6.5"/></svg><span>Compte</span></div>
+        <a class="action" href="panier.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.5 13h-15L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><span>Panier</span></a>
+      </div>
+    </div>
+    <nav class="rayons-nav" aria-label="Rayons">
+      <ul>
+        <li><a href="rayon.html" class="courant">Chiens</a></li>
+        <li><a href="index.html#rayons">Chats</a></li>
+        <li><a href="index.html#rayons">Oiseaux</a></li>
+        <li><a href="index.html#rayons">Rongeurs</a></li>
+        <li><a href="index.html#rayons">Reptiles</a></li>
+        <li><a href="index.html#rayons">Poissons</a></li>
+        <li><a href="index.html#rayons">Basse-cour</a></li>
+        <li><a href="index.html#rayons">Bassins de jardin</a></li>
+        <li><a href="index.html#rayons">Jardinerie</a></li>
+        <li><a href="index.html#rayons" class="offres">Bonnes offres</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="conteneur">
+  <p class="ariane"><a href="index.html">Accueil</a><span class="sep">›</span><span>Chiens</span></p>
+
+  <div class="page-rayon">
+    <aside class="filtres" aria-label="Filtres">
+      <div class="bloc-filtre">
+        <h3>Sous-rayon</h3>
+        <label><input type="checkbox" class="f-cat" value="alimentation" checked>Alimentation<span class="compte">3</span></label>
+        <label><input type="checkbox" class="f-cat" value="couchage" checked>Couchage &amp; confort<span class="compte">2</span></label>
+        <label><input type="checkbox" class="f-cat" value="promenade" checked>Promenade<span class="compte">2</span></label>
+        <label><input type="checkbox" class="f-cat" value="jeux" checked>Jeux &amp; éducation<span class="compte">1</span></label>
+        <label><input type="checkbox" class="f-cat" value="hygiene" checked>Hygiène &amp; soin<span class="compte">1</span></label>
+      </div>
+      <div class="bloc-filtre">
+        <h3>Disponibilité</h3>
+        <label><input type="checkbox" id="f-stock">En stock à Illies seulement</label>
+      </div>
+    </aside>
+
+    <div>
+      <div class="tete-rayon">
+        <h1>Chiens</h1>
+        <span class="nb"><b id="nb-visibles">9</b> produits affichés — données fictives</span>
+      </div>
+      <p class="note-rayon">La disponibilité affichée est celle de <b>votre magasin : Illies</b>. Chaque article se réserve en ligne et se retire en magasin, souvent sous une heure aux heures d'ouverture.</p>
+
+      <div class="grille-produits" id="liste-produits">
+        <article class="produit" data-cat="alimentation" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 38V22l14-10 14 10v16H10Z"/><path d="M20 38v-9h8v9"/></svg></div>
+          <div class="corps">
+            <span class="marque">Alimentation</span>
+            <h3><a href="produit.html">Croquettes adulte 12 kg</a></h3>
+            <p class="prix">33 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 14 sacs</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="alimentation" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 38V18l12-8 12 8v20H12Z"/><path d="M18 38v-7h12v7"/></svg></div>
+          <div class="corps">
+            <span class="marque">Alimentation</span>
+            <h3><a href="produit.html">Croquettes chiot 4 kg</a></h3>
+            <p class="prix">22 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 9 sacs</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="alimentation" data-stock="non">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="10" y="16" width="28" height="20" rx="3"/><path d="M10 24h28M24 16v-4"/></svg></div>
+          <div class="corps">
+            <span class="marque">Alimentation</span>
+            <h3><a href="produit.html">Pâtée sans céréales ×12</a></h3>
+            <p class="prix">17,5 €<small> — exemple</small></p>
+            <p class="stock-ligne epuise"><span class="pastille"></span>Épuisé ici — en stock à Louvroil</p>
+            <a class="btn indispo" href="produit.html">Voir dans un autre magasin</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="couchage" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 32c0-8 7-14 16-14s16 6 16 14v4H8v-4Z"/><path d="M16 30c2-3 5-5 8-5s6 2 8 5"/></svg></div>
+          <div class="corps">
+            <span class="marque">Couchage &amp; confort</span>
+            <h3><a href="produit.html">Panier moelleux taille L</a></h3>
+            <p class="prix">44 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 6</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="couchage" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 36V20l14-9 14 9v16H10Z"/><path d="M18 36v-9h12v9M24 11v6"/></svg></div>
+          <div class="corps">
+            <span class="marque">Couchage &amp; confort</span>
+            <h3><a href="produit.html">Niche bois toit bitumé</a></h3>
+            <p class="prix">222 €<small> — exemple</small></p>
+            <p class="stock-ligne faible"><span class="pastille"></span>Plus que 1 à Illies</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="promenade" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 10c8 2 16 10 20 24"/><circle cx="12" cy="9" r="4"/><path d="M30 30c2-1 5-1 6 1s0 5-3 5-4-4-3-6Z"/></svg></div>
+          <div class="corps">
+            <span class="marque">Promenade</span>
+            <h3><a href="produit.html">Laisse cuir 1,2 m</a></h3>
+            <p class="prix">22 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 11</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="promenade" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22c0-6 5-10 12-10s12 4 12 10-5 12-12 12-12-6-12-12Z"/><path d="M12 24h24M24 12v22"/></svg></div>
+          <div class="corps">
+            <span class="marque">Promenade</span>
+            <h3><a href="produit.html">Harnais réglable M</a></h3>
+            <p class="prix">33 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 8</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="jeux" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 24c4-8 10-12 14-12s10 4 14 12c-4 8-10 12-14 12s-10-4-14-12Z"/><path d="M17 20c2 3 2 5 0 8m14-8c-2 3-2 5 0 8"/></svg></div>
+          <div class="corps">
+            <span class="marque">Jeux &amp; éducation</span>
+            <h3><a href="produit.html">Jouet corde à nœuds</a></h3>
+            <p class="prix">5,5 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 24</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="hygiene" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 12h12v6l4 16c0 3-2 4-4 4H18c-2 0-4-1-4-4l4-16v-6Z"/><path d="M18 18h12"/></svg></div>
+          <div class="corps">
+            <span class="marque">Hygiène &amp; soin</span>
+            <h3><a href="produit.html">Shampoing poils longs 250 ml</a></h3>
+            <p class="prix">8,8 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 15</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="conteneur">
+    <div class="pied-bas" style="border:none;padding:0">
+      <span>Maquette de démonstration — Everywhere Digital. Données et prix fictifs, formulaires inactifs.</span>
+      <span>Aucun suivi, aucun cookie.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// filtres fonctionnels (démo)
+function filtrer(){
+  const cats=[...document.querySelectorAll('.f-cat:checked')].map(c=>c.value);
+  const stockSeul=document.getElementById('f-stock').checked;
+  let n=0;
+  document.querySelectorAll('#liste-produits .produit').forEach(p=>{
+    const ok=cats.includes(p.dataset.cat)&&(!stockSeul||p.dataset.stock==='oui');
+    p.style.display=ok?'':'none';
+    if(ok)n++;
+  });
+  document.getElementById('nb-visibles').textContent=n;
+}
+document.querySelectorAll('.f-cat, #f-stock').forEach(c=>c.addEventListener('change',filtrer));
+filtrer();
+</script>
+</body>
+</html>

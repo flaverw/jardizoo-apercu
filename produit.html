@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Croquettes adulte 12 kg — Jardizoo (maquette de démonstration)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css">
+<style>
+.page-produit{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:30px 0 50px}
+.galerie{background:linear-gradient(135deg,#eef2e4,#dde7cf);border-radius:20px;min-height:380px;display:flex;align-items:center;justify-content:center;color:var(--vert-clair);position:sticky;top:130px;align-self:start}
+.galerie svg{width:150px;height:150px;opacity:.7}
+.galerie .legende{position:absolute;bottom:14px;font-size:11.5px;color:var(--gris)}
+.fiche .marque{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.fiche h1{font-size:clamp(24px,3.2vw,34px);margin:6px 0 10px}
+.fiche .prix{font-family:'Fraunces',serif;font-size:34px;color:var(--vert-fonce)}
+.fiche .prix small{font-size:13px;color:var(--gris);font-family:'Inter',sans-serif}
+.fiche .ligne-prix{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.fiche .ref{font-size:12px;color:var(--gris)}
+.encart{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;padding:20px;margin-bottom:16px}
+.encart h2{font-size:15px;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:12px;color:var(--vert-fonce)}
+table.dispo{width:100%;border-collapse:collapse;font-size:13.5px}
+table.dispo td{padding:8px 4px;border-bottom:1px solid var(--filet)}
+table.dispo tr:last-child td{border-bottom:none}
+table.dispo .etat{display:flex;align-items:center;gap:7px;justify-content:flex-end;font-size:12.5px}
+table.dispo .etat .pastille{animation:none}
+table.dispo .etat.faible .pastille{background:var(--attention)}
+table.dispo .etat.epuise .pastille{background:var(--alerte)}
+table.dispo tr.choisi td{font-weight:600;color:var(--vert-fonce)}
+.quantite{display:flex;align-items:center;gap:0;border:1.5px solid var(--filet);border-radius:12px;overflow:hidden;width:max-content;background:var(--blanc)}
+.quantite button{width:42px;height:44px;border:none;background:none;font-size:19px;cursor:pointer;color:var(--vert-fonce)}
+.quantite button:hover{background:var(--ivoire)}
+.quantite span{min-width:44px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.achat{display:flex;gap:12px;align-items:center;margin:18px 0 10px;flex-wrap:wrap}
+.achat .btn{flex:1;justify-content:center;min-width:220px}
+.rassurance{display:grid;gap:8px;font-size:13px;color:var(--gris);margin-top:14px}
+.rassurance li{list-style:none;display:flex;gap:9px;align-items:flex-start}
+.rassurance svg{width:15px;height:15px;flex:none;margin-top:3px;color:var(--vert)}
+.section-desc{padding:10px 0 64px}
+.desc-grille{display:grid;grid-template-columns:1.4fr 1fr;gap:30px}
+.desc-grille .encart{margin-bottom:0}
+.desc-grille p{font-size:14.5px;color:var(--encre);margin-bottom:10px}
+table.carac{width:100%;border-collapse:collapse;font-size:13.5px}
+table.carac td{padding:8px 4px;border-bottom:1px solid var(--filet)}
+table.carac td:first-child{color:var(--gris)}
+table.carac tr:last-child td{border-bottom:none}
+@media (max-width:860px){
+  .page-produit{grid-template-columns:1fr}
+  .galerie{position:static;min-height:240px}
+  .desc-grille{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement.</div>
+
+<header>
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="logo" href="index.html" aria-label="Jardizoo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
+        Jardizoo
+      </a>
+      <div class="recherche" role="search">
+        <input type="search" placeholder="Chercher un produit, une marque… (démo)" aria-label="Recherche">
+        <button aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </div>
+      <div class="entete-actions">
+        <div class="mon-magasin" title="Choisir mon magasin (démonstration)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1c4d33" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Mon magasin : <b>Illies</b>
+        </div>
+        <div class="action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6.5 8-6.5s8 2.5 8 6.5"/></svg><span>Compte</span></div>
+        <a class="action" href="panier.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.5 13h-15L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><span>Panier</span></a>
+      </div>
+    </div>
+    <nav class="rayons-nav" aria-label="Rayons">
+      <ul>
+        <li><a href="rayon.html" class="courant">Chiens</a></li>
+        <li><a href="index.html#rayons">Chats</a></li>
+        <li><a href="index.html#rayons">Oiseaux</a></li>
+        <li><a href="index.html#rayons">Rongeurs</a></li>
+        <li><a href="index.html#rayons">Reptiles</a></li>
+        <li><a href="index.html#rayons">Poissons</a></li>
+        <li><a href="index.html#rayons">Basse-cour</a></li>
+        <li><a href="index.html#rayons">Bassins de jardin</a></li>
+        <li><a href="index.html#rayons">Jardinerie</a></li>
+        <li><a href="index.html#rayons" class="offres">Bonnes offres</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="conteneur">
+  <p class="ariane"><a href="index.html">Accueil</a><span class="sep">›</span><a href="rayon.html">Chiens</a><span class="sep">›</span><span>Croquettes adulte 12 kg</span></p>
+
+  <div class="page-produit">
+    <div class="galerie">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 38V22l14-10 14 10v16H10Z"/><path d="M20 38v-9h8v9"/><path d="M14 28c2-1 4-1 6 0m8 0c2-1 4-1 6 0"/></svg>
+      <span class="legende">Photo du produit réel à intégrer — visuel de démonstration</span>
+    </div>
+
+    <div class="fiche">
+      <span class="marque">Alimentation chien</span>
+      <h1>Croquettes adulte 12 kg</h1>
+      <div class="ligne-prix"><span class="prix">33 €<small> — prix d'exemple</small></span><span class="ref">Réf. démo CH-1214</span></div>
+
+      <div class="encart">
+        <h2>Disponibilité dans les magasins de l'enseigne</h2>
+        <table class="dispo">
+          <tr class="choisi"><td>Illies — votre magasin</td><td><span class="etat"><span class="pastille"></span>En stock — 14 sacs</span></td></tr>
+          <tr><td>Louvroil</td><td><span class="etat epuise"><span class="pastille"></span>Épuisé</span></td></tr>
+          <tr><td>Hénin-Beaumont</td><td><span class="etat"><span class="pastille"></span>En stock — 9 sacs</span></td></tr>
+          <tr><td>Petite-Forêt</td><td><span class="etat"><span class="pastille"></span>En stock — 11 sacs</span></td></tr>
+          <tr><td>Saint-Pol-sur-Ternoise</td><td><span class="etat faible"><span class="pastille"></span>Plus que 2</span></td></tr>
+          <tr><td>Camon</td><td><span class="etat"><span class="pastille"></span>En stock — 7 sacs</span></td></tr>
+        </table>
+      </div>
+
+      <div class="achat">
+        <div class="quantite" aria-label="Quantité">
+          <button type="button" id="q-moins" aria-label="Diminuer">−</button>
+          <span id="q-val">1</span>
+          <button type="button" id="q-plus" aria-label="Augmenter">+</button>
+        </div>
+        <a class="btn btn-vert" href="panier.html">Réserver — retrait 1 h à Illies</a>
+      </div>
+
+      <ul class="rassurance">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Mis de côté à votre nom dès la réservation — payé en ligne ou au comptoir, au choix.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Prêt souvent sous une heure aux heures d'ouverture — vous êtes prévenu par message.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Montant complet affiché avant paiement ; débit à la préparation, jamais avant.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-desc">
+    <div class="desc-grille">
+      <div class="encart">
+        <h2>Description</h2>
+        <p>Croquettes complètes pour chien adulte de taille moyenne à grande. Sac de 12 kg avec fermeture refermable.</p>
+        <p>Cette fiche est un gabarit de démonstration : sur le site réel, chaque produit reprend la description, la photo et la composition du fournisseur, relues avant mise en ligne. Pour le choix d'une alimentation adaptée à votre animal, l'équipe en magasin reste l'interlocuteur — la fiche décrit, elle ne conseille pas.</p>
+      </div>
+      <div class="encart">
+        <h2>Caractéristiques</h2>
+        <table class="carac">
+          <tr><td>Conditionnement</td><td>Sac 12 kg</td></tr>
+          <tr><td>Âge</td><td>Adulte (1 à 7 ans)</td></tr>
+          <tr><td>Gabarit</td><td>Moyen et grand</td></tr>
+          <tr><td>Référence démo</td><td>CH-1214</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="conteneur">
+    <div class="pied-bas" style="border:none;padding:0">
+      <span>Maquette de démonstration — Everywhere Digital. Données et prix fictifs, formulaires inactifs.</span>
+      <span>Aucun suivi, aucun cookie.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const val=document.getElementById('q-val');
+document.getElementById('q-plus').addEventListener('click',()=>{val.textContent=Math.min(9,+val.textContent+1)});
+document.getElementById('q-moins').addEventListener('click',()=>{val.textContent=Math.max(1,+val.textContent-1)});
+</script>
+</body>
+</html>

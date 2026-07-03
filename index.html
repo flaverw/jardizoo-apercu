@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Jardizoo — maquette de démonstration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css">
+<style>
+/* — héros : le semis — */
+.heros{background:linear-gradient(180deg,var(--vert-fonce) 0%,var(--vert) 100%);color:var(--ivoire);overflow:hidden;position:relative}
+.heros-int{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:64px 0 72px}
+.heros h1{color:var(--ivoire);font-size:clamp(30px,4.6vw,46px);margin-bottom:18px}
+.heros h1 em{font-style:italic;color:#cfe3b8}
+.heros p.sous{font-size:17px;color:#dbe7cc;max-width:46ch;margin-bottom:28px}
+.heros .filet-germe{display:block;margin:14px 0 0}
+.cta-groupe{display:flex;gap:14px;flex-wrap:wrap}
+.heros-preuves{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.preuve{font-size:13px;color:#c9d9b6;display:flex;align-items:center;gap:8px}
+.preuve svg{width:16px;height:16px;flex:none}
+.semis-svg{width:100%;max-width:420px;margin:0 auto}
+
+/* — bandeau magasin / stock — */
+.bandeau-stock{background:var(--blanc);border-bottom:1px solid var(--filet)}
+.bandeau-stock-int{display:flex;align-items:center;gap:16px;padding:13px 0;font-size:14px;flex-wrap:wrap}
+.bandeau-stock select{font:inherit;font-size:14px;border:1.5px solid var(--filet);border-radius:8px;padding:6px 10px;background:var(--ivoire);color:var(--vert-fonce);font-weight:600;cursor:pointer}
+
+/* — rayons — */
+.grille-rayons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.rayon{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;padding:22px 16px;text-align:center;transition:transform .25s,box-shadow .25s;cursor:pointer}
+.rayon:hover{transform:translateY(-4px);box-shadow:var(--ombre)}
+.rayon .ico{width:46px;height:46px;margin:0 auto 12px;color:var(--vert)}
+.rayon b{display:block;font-size:14.5px;font-weight:600;color:var(--vert-fonce)}
+.rayon span{font-size:12px;color:var(--gris)}
+
+/* — retrait 1h — */
+.retrait{background:var(--vert-fonce);color:var(--ivoire)}
+.retrait h2{color:var(--ivoire)}
+.retrait .intro-section{color:#c9d9b6}
+.etapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;counter-reset:etape}
+.etape{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px 22px;position:relative}
+.etape::before{counter-increment:etape;content:counter(etape,decimal-leading-zero);font-family:'Fraunces',serif;font-size:15px;color:var(--seve);letter-spacing:.1em}
+.etape h3{color:var(--ivoire);font-size:18px;margin:10px 0 8px}
+.etape p{font-size:14px;color:#c9d9b6}
+
+/* — paiement — */
+.paiement-cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.pcarte{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;padding:26px 22px}
+.pcarte .ico{width:38px;height:38px;color:var(--vert);margin-bottom:14px}
+.pcarte h3{font-size:17px;margin-bottom:8px}
+.pcarte p{font-size:14px;color:var(--gris)}
+
+/* — avis — */
+.avis-bloc{display:flex;align-items:center;gap:34px;flex-wrap:wrap;background:var(--blanc);border:1px solid var(--filet);border-radius:20px;padding:34px}
+.note{font-family:'Fraunces',serif;font-size:54px;color:var(--vert-fonce);line-height:1}
+.etoiles{color:#d9a13c;font-size:19px;letter-spacing:2px}
+.avis-bloc .detail{font-size:13.5px;color:var(--gris);margin-top:6px}
+.avis-citations{flex:1;min-width:260px;display:grid;gap:12px}
+.citation{font-size:14px;border-left:3px solid var(--seve);padding-left:14px;color:var(--encre)}
+.citation small{display:block;color:var(--gris);margin-top:3px}
+
+/* — magasins — */
+.grille-magasins{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.magasin{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;padding:24px}
+.magasin h3{font-size:18px;margin-bottom:6px}
+.magasin p{font-size:13.5px;color:var(--gris);margin-bottom:4px}
+.magasin .ouvert{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--vert);font-weight:600;margin-top:10px}
+
+@media (prefers-reduced-motion: reduce){
+  .semis-svg .tige,.semis-svg .feuille,.filet-germe path{animation:none !important;stroke-dashoffset:0 !important;opacity:1 !important}
+}
+
+/* — le semis (signature) — */
+.semis-svg .tige{fill:none;stroke:#cfe3b8;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:germer 2.2s cubic-bezier(.4,0,.2,1) forwards}
+.semis-svg .tige.t2{animation-delay:.5s}
+.semis-svg .tige.t3{animation-delay:1s}
+.semis-svg .feuille{fill:#7fae62;opacity:0;transform-origin:center;animation:eclore .6s ease forwards}
+@keyframes germer{to{stroke-dashoffset:0}}
+@keyframes eclore{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+.filet-germe path{stroke:var(--seve);stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:germer 1.6s .4s ease forwards}
+
+@media (max-width:860px){
+  .heros-int{grid-template-columns:1fr;padding:44px 0 52px}
+  .semis-svg{max-width:300px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement.</div>
+
+<header>
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="logo" href="#" aria-label="Jardizoo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
+        Jardizoo
+      </a>
+      <div class="recherche" role="search">
+        <input type="search" placeholder="Chercher un produit, une marque… (démo)" aria-label="Recherche">
+        <button aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </div>
+      <div class="entete-actions">
+        <div class="mon-magasin" title="Choisir mon magasin (démonstration)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1c4d33" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Mon magasin : <b id="magasin-choisi">Illies</b>
+        </div>
+        <div class="action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6.5 8-6.5s8 2.5 8 6.5"/></svg><span>Compte</span></div>
+        <a class="action" href="panier.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.5 13h-15L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><span>Panier</span></a>
+      </div>
+    </div>
+    <nav class="rayons-nav" aria-label="Rayons">
+      <ul>
+        <li><a href="rayon.html">Chiens</a></li>
+        <li><a href="#rayons">Chats</a></li>
+        <li><a href="#rayons">Oiseaux</a></li>
+        <li><a href="#rayons">Rongeurs</a></li>
+        <li><a href="#rayons">Reptiles</a></li>
+        <li><a href="#rayons">Poissons</a></li>
+        <li><a href="#rayons">Basse-cour</a></li>
+        <li><a href="#rayons">Bassins de jardin</a></li>
+        <li><a href="#rayons">Jardinerie</a></li>
+        <li><a href="#rayons" class="offres">Bonnes offres</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HÉROS -->
+<div class="heros">
+  <div class="conteneur heros-int">
+    <div>
+      <h1>Vos magasins,<br>leurs rayons, <em>leur stock</em> —<br>enfin en ligne.</h1>
+      <svg class="filet-germe" width="220" height="14" viewBox="0 0 220 14" aria-hidden="true"><path pathLength="1" d="M2 10 C 40 10, 60 4, 110 7 S 190 12, 218 6"/></svg>
+      <p class="sous">Jardizoo, c'est d'abord des magasins — des allées de plantes, des aquariums, des conseils au comptoir. Ce site les prolonge : vous voyez ce qui est en rayon près de chez vous, vous réservez, vous retirez en magasin.</p>
+      <div class="cta-groupe">
+        <a class="btn btn-plein" href="#retrait"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Retrait en magasin dès 1 h</a>
+        <a class="btn btn-ligne" href="#rayons">Parcourir les rayons</a>
+      </div>
+      <div class="heros-preuves">
+        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/></svg>Des magasins dans les Hauts-de-France</span>
+        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 2.9 6.3 6.6.6-5 4.5 1.5 6.6L12 16.5 6 20l1.5-6.6-5-4.5 6.6-.6L12 2Z"/></svg>4,3/5 — plus de 1 200 avis Google</span>
+        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Stock affiché magasin par magasin</span>
+      </div>
+    </div>
+    <!-- signature « le semis » : trois tiges single-line qui germent -->
+    <svg class="semis-svg" viewBox="0 0 320 300" aria-hidden="true">
+      <path d="M10 268 H310" stroke="rgba(240,240,220,.35)" stroke-width="2" stroke-linecap="round"/>
+      <path class="tige" pathLength="1" d="M90 268 C 88 230, 96 200, 88 168"/>
+      <ellipse class="feuille" style="animation-delay:1.5s" cx="72" cy="180" rx="16" ry="7" transform="rotate(-32 72 180)"/>
+      <ellipse class="feuille" style="animation-delay:1.7s" cx="103" cy="166" rx="16" ry="7" transform="rotate(26 103 166)"/>
+      <path class="tige t2" pathLength="1" d="M170 268 C 174 214, 162 170, 172 118"/>
+      <ellipse class="feuille" style="animation-delay:2s" cx="152" cy="140" rx="19" ry="8" transform="rotate(-30 152 140)"/>
+      <ellipse class="feuille" style="animation-delay:2.2s" cx="190" cy="122" rx="19" ry="8" transform="rotate(28 190 122)"/>
+      <ellipse class="feuille" style="animation-delay:2.4s" cx="171" cy="106" rx="8" ry="15" transform="rotate(2 171 106)"/>
+      <path class="tige t3" pathLength="1" d="M250 268 C 248 240, 256 218, 250 196"/>
+      <ellipse class="feuille" style="animation-delay:2.5s" cx="236" cy="206" rx="13" ry="6" transform="rotate(-30 236 206)"/>
+      <ellipse class="feuille" style="animation-delay:2.7s" cx="262" cy="196" rx="13" ry="6" transform="rotate(26 262 196)"/>
+    </svg>
+  </div>
+</div>
+
+<!-- BANDEAU STOCK LOCAL -->
+<div class="bandeau-stock">
+  <div class="conteneur bandeau-stock-int">
+    <span class="pastille" aria-hidden="true"></span>
+    <span>Les stocks affichés ci-dessous sont ceux de votre magasin :</span>
+    <select id="selecteur-magasin" aria-label="Choisir un magasin">
+      <option>Illies</option>
+      <option>Louvroil</option>
+      <option>Hénin-Beaumont</option>
+      <option>Petite-Forêt</option>
+      <option>Saint-Pol-sur-Ternoise</option>
+      <option>Camon</option>
+    </select>
+    <span style="color:var(--gris);font-size:12.5px">(démonstration — données fictives)</span>
+  </div>
+</div>
+
+<!-- RAYONS -->
+<section id="rayons">
+  <div class="conteneur">
+    <p class="sur-titre apparait">Les rayons</p>
+    <h2 class="titre-section apparait">Les mêmes univers qu'en magasin</h2>
+    <p class="intro-section apparait">Neuf univers, les mêmes qu'entre les allées. Les animaux, eux, ne se vendent pas en ligne : ils se rencontrent en magasin, avec les conseils de l'équipe.</p>
+    <div class="grille-rayons">
+      <a class="rayon apparait" href="rayon.html"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 28c-3 0-5-3-5-6s2-5 4-5c1-4 4-7 8-7 3 0 5 1 7 3 5 0 9 4 9 9 0 4-3 6-6 6"/><path d="M16 40c2-6 5-9 8-9s6 3 8 9"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/><circle cx="29" cy="20" r="1.6" fill="currentColor"/></svg><b>Chiens</b><span>Croquettes, couchage, jeux</span></a>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20 9 10l8 4c2-1 4-1 7-1s5 0 7 1l8-4-3 10c1 2 2 5 2 8 0 8-6 12-14 12S10 36 10 28c0-3 1-6 2-8Z"/><circle cx="19" cy="26" r="1.6" fill="currentColor"/><circle cx="29" cy="26" r="1.6" fill="currentColor"/></svg><b>Chats</b><span>Alimentation, litière, arbres</span></div>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M30 12c-8 0-13 6-13 13v11l-7 2h22c6 0 10-5 10-11 0-8-5-15-12-15Z"/><circle cx="31" cy="19" r="1.6" fill="currentColor"/><path d="M42 17l-5 2"/></svg><b>Oiseaux</b><span>Graines, cages, volières</span></div>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M34 22c4 0 7 3 7 7s-3 7-8 7H15c-4 0-7-3-7-6 0-4 3-6 6-6 0-6 5-11 11-11 5 0 9 4 9 9Z"/><circle cx="31" cy="26" r="1.5" fill="currentColor"/><path d="M40 34c2 1 3 3 3 5"/></svg><b>Rongeurs</b><span>Foin, cages, hygiène</span></div>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 30c6-8 14-12 22-10 6 1 10 5 10 9 0 3-3 6-8 6-9 1-18 0-24-5Z"/><path d="M14 26c-2-3-2-6 0-9 3 1 5 3 6 6"/><circle cx="33" cy="27" r="1.5" fill="currentColor"/></svg><b>Reptiles</b><span>Terrariums, chauffage, UV</span></div>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 24c5-7 12-10 18-10s11 3 14 10c-3 7-8 10-14 10s-13-3-18-10Z"/><path d="M40 24l-6-6m6 6-6 6"/><circle cx="18" cy="23" r="1.6" fill="currentColor"/></svg><b>Poissons</b><span>Aquariums, filtration, soins</span></div>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 34c-7 0-12-5-12-11 0-5 4-9 8-9 1-3 3-5 6-5s6 2 7 6c4 1 7 4 7 8 0 6-6 11-16 11Z"/><path d="M20 34v6m8-6v6"/><circle cx="27" cy="17" r="1.5" fill="currentColor"/></svg><b>Basse-cour</b><span>Poulaillers, aliments</span></div>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 34h32M12 34c0-8 5-14 12-14s12 6 12 14"/><path d="M24 20v-8m0 0c-3 0-5-2-5-5 3 0 5 2 5 5Zm0 0c3 0 5-2 5-5-3 0-5 2-5 5Z"/></svg><b>Bassins de jardin</b><span>Pompes, bâches, poissons</span></div>
+      <div class="rayon apparait"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 40V22"/><path d="M24 26c-8 0-13-6-13-14 8 0 13 6 13 14Z"/><path d="M24 20c8 0 13-6 13-14-8 0-13 6-13 14Z"/><path d="M14 40h20"/></svg><b>Jardinerie</b><span>Plantes, terreau, outillage</span></div>
+      <div class="rayon apparait" style="border-color:var(--terre)"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#b5643a" stroke-width="2"><path d="M8 20h32v6c0 9-7 14-16 14S8 35 8 26v-6Z"/><path d="M8 20l4-10h24l4 10M24 10v10"/></svg><b style="color:var(--terre)">Bonnes offres</b><span>Arrivages et fins de série</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUITS DÉMO -->
+<section style="padding-top:0">
+  <div class="conteneur">
+    <p class="sur-titre apparait">En rayon près de chez vous</p>
+    <h2 class="titre-section apparait">Le stock de votre magasin, sans surprise</h2>
+    <p class="intro-section apparait">Chaque fiche indique la disponibilité réelle dans le magasin que vous avez choisi. Ce que vous réservez est mis de côté à votre nom.</p>
+    <div class="grille-produits">
+      <article class="produit apparait">
+        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 38V22l14-10 14 10v16H10Z"/><path d="M20 38v-9h8v9"/></svg></div>
+        <div class="corps">
+          <span class="marque">Alimentation chien</span>
+          <h3><a href="produit.html">Croquettes adulte 12 kg</a></h3>
+          <p class="prix">33 €<small> — exemple</small></p>
+          <p class="stock-ligne"><span class="pastille"></span>En stock à <span class="ou-magasin">Illies</span> — 14 sacs</p>
+          <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+        </div>
+      </article>
+      <article class="produit apparait">
+        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="14" width="32" height="22" rx="3"/><path d="M8 22h32M14 30h6"/></svg></div>
+        <div class="corps">
+          <span class="marque">Aquariophilie</span>
+          <h3>Aquarium équipé 120 L</h3>
+          <p class="prix">111 €<small> — exemple</small></p>
+          <p class="stock-ligne faible"><span class="pastille"></span>Plus que 2 à <span class="ou-magasin">Illies</span></p>
+          <button class="btn">Réserver — retrait 1 h</button>
+        </div>
+      </article>
+      <article class="produit apparait">
+        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 40V20"/><path d="M24 26c-7 0-12-5-12-12 7 0 12 5 12 12Zm0-6c7 0 12-5 12-12-7 0-12 5-12 12Z"/><path d="M15 40h18"/></svg></div>
+        <div class="corps">
+          <span class="marque">Jardinerie</span>
+          <h3>Terreau plantation 50 L</h3>
+          <p class="prix">5,5 €<small> — exemple</small></p>
+          <p class="stock-ligne"><span class="pastille"></span>En stock à <span class="ou-magasin">Illies</span> — 60 sacs</p>
+          <button class="btn">Réserver — retrait 1 h</button>
+        </div>
+      </article>
+      <article class="produit apparait">
+        <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 36c0-9 5-16 12-16s12 7 12 16H12Z"/><path d="M24 20v-6m-6 22h12"/></svg></div>
+        <div class="corps">
+          <span class="marque">Basse-cour</span>
+          <h3>Poulailler 4 poules</h3>
+          <p class="prix">222 €<small> — exemple</small></p>
+          <p class="stock-ligne epuise"><span class="pastille"></span>Épuisé ici — en stock à Hénin-Beaumont</p>
+          <button class="btn indispo">Voir dans un autre magasin</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RETRAIT 1H -->
+<section class="retrait" id="retrait">
+  <div class="conteneur">
+    <p class="sur-titre apparait" style="color:#cfe3b8">Le retrait en magasin</p>
+    <h2 class="titre-section apparait">Commandé en ligne, prêt au comptoir</h2>
+    <p class="intro-section apparait">Trois étapes, pas davantage. Et si vous préférez régler au comptoir en retirant votre commande, c'est possible aussi.</p>
+    <div class="etapes">
+      <div class="etape apparait"><h3>Vous réservez</h3><p>Vous choisissez vos articles sur le stock réel de votre magasin. Ils sont mis de côté à votre nom.</p></div>
+      <div class="etape apparait"><h3>On prépare</h3><p>L'équipe du magasin rassemble votre commande. Vous recevez un message dès qu'elle est prête — souvent sous une heure aux heures d'ouverture.</p></div>
+      <div class="etape apparait"><h3>Vous retirez</h3><p>Au comptoir retrait, sans faire les allées si vous êtes pressé. Paiement déjà réglé en ligne, ou sur place — au choix.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIEMENT -->
+<section>
+  <div class="conteneur">
+    <p class="sur-titre apparait">Le paiement</p>
+    <h2 class="titre-section apparait">Clair avant, pendant et après</h2>
+    <p class="intro-section apparait">Le montant total — article, éventuelle livraison, rien d'autre — s'affiche avant tout paiement. Chaque commande est confirmée par écrit.</p>
+    <div class="paiement-cartes">
+      <div class="pcarte apparait"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><h3>Carte bancaire</h3><p>Paiement sécurisé en ligne, débité à la préparation de la commande — pas avant.</p></div>
+      <div class="pcarte apparait"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><h3>Au retrait, en magasin</h3><p>Vous réservez en ligne sans payer, et vous réglez au comptoir en retirant : carte, espèces, comme d'habitude.</p></div>
+      <div class="pcarte apparait"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 1 1-9-9"/><path d="m9 12 2.5 2.5L17 9"/></svg><h3>Confirmation écrite</h3><p>Récapitulatif immédiat par courriel : articles, montant, magasin de retrait, et qui appeler si besoin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section style="padding-top:0">
+  <div class="conteneur">
+    <div class="avis-bloc apparait">
+      <div>
+        <div class="note">4,3<span style="font-size:22px;color:var(--gris)">/5</span></div>
+        <div class="etoiles" aria-hidden="true">★★★★☆</div>
+        <p class="detail">Plus de 1 200 avis Google<br>sur les magasins de l'enseigne</p>
+      </div>
+      <div class="avis-citations">
+        <p class="citation">« Grand choix, rayon plantes, animaux. »<small>— thèmes revenant dans les avis Google publics</small></p>
+        <p class="citation">« Personnel très agréable, conseils de qualité. »<small>— thèmes revenant dans les avis Google publics</small></p>
+        <p class="citation">« Choix et prix abordables. »<small>— thèmes revenant dans les avis Google publics</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAGASINS -->
+<section id="magasins" style="padding-top:0">
+  <div class="conteneur">
+    <p class="sur-titre apparait">Les magasins</p>
+    <h2 class="titre-section apparait">L'enseigne, magasin par magasin</h2>
+    <p class="intro-section apparait">Adresses et horaires d'exemple — à remplacer par les coordonnées réelles de chaque magasin de l'enseigne.</p>
+    <div class="grille-magasins">
+      <div class="magasin apparait"><h3>Illies</h3><p>5046 route Nationale, 59480 Illies</p><p>Lun–Sam 9h–12h / 14h–19h · Dim 9h–12h</p><span class="ouvert"><span class="pastille"></span>Horaires d'exemple</span></div>
+      <div class="magasin apparait"><h3>Louvroil</h3><p>Adresse à confirmer</p><p>Horaires à confirmer</p><span class="ouvert"><span class="pastille"></span>Horaires d'exemple</span></div>
+      <div class="magasin apparait"><h3>Hénin-Beaumont</h3><p>Avenue du Bord des Eaux, 62110 Hénin-Beaumont</p><p>Horaires à confirmer</p><span class="ouvert"><span class="pastille"></span>Horaires d'exemple</span></div>
+      <div class="magasin apparait"><h3>Petite-Forêt</h3><p>Site commercial Auchan, 59494 Petite-Forêt</p><p>Horaires à confirmer</p><span class="ouvert"><span class="pastille"></span>Horaires d'exemple</span></div>
+      <div class="magasin apparait"><h3>Saint-Pol-sur-Ternoise</h3><p>1 rue René Cassin, 62130 Saint-Pol-sur-Ternoise</p><p>Horaires à confirmer</p><span class="ouvert"><span class="pastille"></span>Horaires d'exemple</span></div>
+      <div class="magasin apparait"><h3>Camon</h3><p>Adresse à confirmer</p><p>Horaires à confirmer</p><span class="ouvert"><span class="pastille"></span>Horaires d'exemple</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="conteneur">
+    <div class="pied-grille">
+      <div>
+        <h4 style="font-family:'Fraunces',serif;font-size:20px">Jardizoo</h4>
+        <p>L'animalerie et la jardinerie de vos magasins des Hauts-de-France, prolongées en ligne. Les animaux, eux, vous attendent en magasin.</p>
+      </div>
+      <div><h4>Rayons</h4><ul><li><a href="#rayons">Chiens</a></li><li><a href="#rayons">Chats</a></li><li><a href="#rayons">Aquariophilie</a></li><li><a href="#rayons">Jardinerie</a></li></ul></div>
+      <div><h4>Pratique</h4><ul><li><a href="#retrait">Retrait en magasin</a></li><li><a href="#magasins">Nos magasins</a></li><li><a href="#">Livraison</a></li><li><a href="#">Contact</a></li><li><a href="gestion.html">Le Comptoir — démo gestion</a></li></ul></div>
+      <div><h4>L'enseigne</h4><ul><li><a href="#">Qui sommes-nous</a></li><li><a href="#">Conditions de vente</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">Mentions légales</a></li></ul></div>
+    </div>
+    <div class="pied-bas">
+      <span>Maquette de démonstration — Everywhere Digital. Données et prix fictifs, formulaires inactifs.</span>
+      <span>Aucun suivi, aucun cookie.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// apparition au défilement
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.apparait').forEach(el=>obs.observe(el));
+// magasin choisi → répercuté sur les fiches produits (démo)
+const sel=document.getElementById('selecteur-magasin');
+sel.addEventListener('change',()=>{
+  document.getElementById('magasin-choisi').textContent=sel.value;
+  document.querySelectorAll('.ou-magasin').forEach(s=>s.textContent=sel.value);
+});
+</script>
+</body>
+</html>

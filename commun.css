@@ -1,0 +1,116 @@
+/* ═══ Jardizoo — refonte, style commun (maquette de démonstration) ═══ */
+:root{
+  --vert:#1c4d33;
+  --vert-fonce:#123723;
+  --vert-clair:#2e6b47;
+  --seve:#7fae62;
+  --terre:#b5643a;
+  --ivoire:#f7f4ec;
+  --blanc:#fffdf8;
+  --encre:#22271f;
+  --gris:#6b7263;
+  --filet:#e3ddcd;
+  --alerte:#c0563e;
+  --attention:#d9a13c;
+  --ombre:0 10px 30px rgba(28,52,35,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--encre);background:var(--ivoire);line-height:1.6;font-size:16px}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.15;color:var(--vert-fonce)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.conteneur{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* — bandeau démonstration — */
+.demo-bandeau{background:var(--encre);color:#f0ead8;text-align:center;font-size:12.5px;padding:7px 14px;letter-spacing:.03em}
+.demo-bandeau strong{color:#ffd9a0;font-weight:600}
+
+/* — entête — */
+header{background:var(--blanc);border-bottom:1px solid var(--filet);position:sticky;top:0;z-index:50}
+.entete-haut{display:flex;align-items:center;gap:24px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:26px;color:var(--vert-fonce);font-weight:600;letter-spacing:.01em}
+.logo svg{width:34px;height:34px}
+.recherche{flex:1;display:flex;max-width:460px}
+.recherche input{flex:1;border:1.5px solid var(--filet);border-right:none;border-radius:10px 0 0 10px;padding:10px 14px;font:inherit;font-size:14px;background:var(--ivoire);color:var(--encre)}
+.recherche input::placeholder{color:var(--gris)}
+.recherche button{border:none;background:var(--vert);color:#fff;padding:0 16px;border-radius:0 10px 10px 0;cursor:pointer}
+.entete-actions{display:flex;gap:18px;align-items:center;font-size:13.5px;color:var(--vert-fonce);white-space:nowrap}
+.entete-actions .action{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
+.entete-actions .action:hover{color:var(--vert-clair)}
+.entete-actions svg{width:21px;height:21px}
+.mon-magasin{background:var(--ivoire);border:1.5px solid var(--filet);border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px}
+.mon-magasin b{color:var(--vert)}
+nav.rayons-nav{border-top:1px solid var(--filet);overflow-x:auto}
+nav.rayons-nav ul{display:flex;gap:4px;list-style:none;padding:0}
+nav.rayons-nav a{display:block;padding:11px 13px;font-size:13.5px;font-weight:500;color:var(--encre);border-bottom:2.5px solid transparent;white-space:nowrap}
+nav.rayons-nav a:hover,nav.rayons-nav a.courant{color:var(--vert);border-bottom-color:var(--seve)}
+nav.rayons-nav a.offres{color:var(--terre)}
+
+/* — boutons — */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;border:none;font-family:inherit}
+.btn-plein{background:var(--seve);color:var(--vert-fonce)}
+.btn-plein:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.btn-ligne{background:transparent;color:var(--ivoire);border:1.5px solid rgba(240,240,220,.45)}
+.btn-ligne:hover{border-color:var(--ivoire)}
+.btn-vert{background:var(--vert);color:#fff}
+.btn-vert:hover{background:var(--vert-clair)}
+.btn-discret{background:var(--blanc);color:var(--vert-fonce);border:1.5px solid var(--filet)}
+.btn-discret:hover{border-color:var(--seve)}
+
+/* — sections — */
+section{padding:64px 0}
+.sur-titre{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--terre);font-weight:600;margin-bottom:10px}
+h2.titre-section{font-size:clamp(24px,3.2vw,34px);margin-bottom:14px;position:relative;display:inline-block}
+.intro-section{color:var(--gris);max-width:62ch;margin-bottom:36px}
+
+/* — pastilles de stock — */
+.pastille{width:9px;height:9px;border-radius:50%;background:var(--seve);flex:none;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.stock-ligne{display:flex;align-items:center;gap:7px;font-size:12.5px;margin-bottom:12px}
+.stock-ligne .pastille{animation:none}
+.stock-ligne.faible .pastille{background:var(--attention)}
+.stock-ligne.epuise .pastille{background:var(--alerte)}
+
+/* — cartes produit — */
+.grille-produits{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.produit{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.produit:hover{transform:translateY(-4px);box-shadow:var(--ombre)}
+.produit .visuel{height:150px;background:linear-gradient(135deg,#eef2e4,#dde7cf);display:flex;align-items:center;justify-content:center;color:var(--vert-clair)}
+.produit .visuel svg{width:56px;height:56px;opacity:.75}
+.produit .corps{padding:16px}
+.produit .marque{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.produit h3{font-size:15.5px;margin:4px 0 8px;font-family:'Inter',sans-serif;font-weight:600;color:var(--encre)}
+.produit .prix{font-family:'Fraunces',serif;font-size:20px;color:var(--vert-fonce);margin-bottom:10px}
+.produit .prix small{font-size:12px;color:var(--gris);font-family:'Inter',sans-serif}
+.produit .btn{width:100%;justify-content:center;padding:10px;background:var(--vert);color:#fff;font-size:13.5px}
+.produit .btn:hover{background:var(--vert-clair)}
+.produit .btn.indispo{background:var(--ivoire);color:var(--gris);border:1.5px solid var(--filet);cursor:default}
+
+/* — fil d'Ariane — */
+.ariane{font-size:13px;color:var(--gris);padding:18px 0 0}
+.ariane a:hover{color:var(--vert)}
+.ariane .sep{margin:0 7px;color:var(--filet)}
+
+/* — pied — */
+footer{background:var(--vert-fonce);color:#b9c9a8;padding:52px 0 30px;font-size:13.5px}
+.pied-grille{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:34px;margin-bottom:36px}
+footer h4{color:var(--ivoire);font-size:14px;margin-bottom:12px;font-weight:600}
+footer li{list-style:none;margin-bottom:8px}
+footer a:hover{color:var(--ivoire)}
+.pied-bas{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px}
+
+/* — apparitions au défilement — */
+.apparait{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.apparait.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .apparait{opacity:1;transform:none;transition:none}
+  .pastille{animation:none}
+}
+
+@media (max-width:860px){
+  .pied-grille{grid-template-columns:1fr 1fr}
+  .recherche{display:none}
+  .entete-actions .action span{display:none}
+  section{padding:44px 0}
+}
