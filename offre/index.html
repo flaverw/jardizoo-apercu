@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>L'offre — Jardizoo × Everywhere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vert:#1c4d33;
+  --vert-fonce:#123723;
+  --vert-clair:#2e6b47;
+  --seve:#7fae62;
+  --terre:#b5643a;
+  --ivoire:#f7f4ec;
+  --blanc:#fffdf8;
+  --encre:#22271f;
+  --gris:#6b7263;
+  --filet:#e3ddcd;
+  --ombre:0 10px 30px rgba(28,52,35,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--encre);background:var(--ivoire);line-height:1.6;font-size:16px}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.15;color:var(--vert-fonce)}
+a{color:inherit;text-decoration:none}
+.conteneur{max-width:1120px;margin:0 auto;padding:0 20px}
+
+.demo-bandeau{background:var(--encre);color:#f0ead8;text-align:center;font-size:12.5px;padding:7px 14px;letter-spacing:.03em}
+.demo-bandeau strong{color:#ffd9a0;font-weight:600}
+
+header{background:var(--blanc);border-bottom:1px solid var(--filet)}
+.entete-haut{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:26px;color:var(--vert-fonce);font-weight:600;letter-spacing:.01em}
+.logo svg{width:34px;height:34px}
+.retour{font-size:13.5px;font-weight:600;color:var(--vert);display:inline-flex;align-items:center;gap:7px}
+.retour:hover{color:var(--vert-clair)}
+
+.entete-offre{background:var(--vert-fonce);color:var(--ivoire);padding:58px 0 62px;text-align:center}
+.entete-offre .sur-titre{color:#cfe3b8}
+.entete-offre h1{color:var(--ivoire);font-size:clamp(28px,4.2vw,42px);margin-bottom:14px}
+.entete-offre p{color:#c9d9b6;max-width:58ch;margin:0 auto}
+
+.sur-titre{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--terre);font-weight:600;margin-bottom:10px}
+
+.formules{padding:56px 0 70px}
+.grille-formules{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;align-items:start}
+.formule{background:var(--blanc);border:1px solid var(--filet);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--ombre)}
+.formule.depart{border:2px solid var(--seve);position:relative}
+.badge{position:absolute;top:-13px;left:26px;background:var(--seve);color:var(--vert-fonce);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 14px}
+.formule h2{font-size:24px}
+.formule .prix{font-family:'Fraunces',serif;font-size:30px;color:var(--vert-fonce);line-height:1.2}
+.formule .prix small{display:block;font-family:'Inter',sans-serif;font-size:13px;color:var(--gris);font-weight:400;margin-top:4px}
+.formule ul{list-style:none;display:grid;gap:10px;font-size:14px;color:var(--encre)}
+.formule li{padding-left:24px;position:relative}
+.formule li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:50%;background:var(--seve)}
+.formule .note-f{font-size:12.5px;color:var(--gris);border-top:1px solid var(--filet);padding-top:12px;margin-top:auto}
+.formule.everywhere{background:var(--vert-fonce);border-color:var(--vert-fonce)}
+.formule.everywhere h2,.formule.everywhere .prix{color:var(--ivoire)}
+.formule.everywhere .prix small{color:#c9d9b6}
+.formule.everywhere ul{color:#e4ecd8}
+.formule.everywhere .note-f{color:#b9c9a8;border-top-color:rgba(255,255,255,.18)}
+
+.precisions{background:var(--blanc);border-top:1px solid var(--filet);padding:44px 0 52px}
+.precisions p{max-width:70ch;color:var(--gris);font-size:14px;margin-bottom:8px}
+
+footer{background:var(--vert-fonce);color:#b9c9a8;padding:30px 0;font-size:13px;text-align:center}
+
+@media (max-width:640px){
+  .logo{font-size:22px}
+  .logo svg{width:28px;height:28px}
+  .formules{padding:42px 0 52px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement.</div>
+
+<header>
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="logo" href="../index.html" aria-label="Jardizoo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
+        Jardizoo
+      </a>
+      <a class="retour" href="../index.html">&larr; Revenir à la maquette</a>
+    </div>
+  </div>
+</header>
+
+<div class="entete-offre">
+  <div class="conteneur">
+    <p class="sur-titre">L'offre Everywhere</p>
+    <h1>Trois formules, un point de départ</h1>
+    <p>Le site que vous venez de parcourir existe déjà. Voici comment il se met en ligne, ce qu'il coûte, et ce que chaque formule ajoute. Tout se décide de vive voix, rien ne s'engage sans vous.</p>
+  </div>
+</div>
+
+<section class="formules">
+  <div class="conteneur">
+    <div class="grille-formules">
+
+      <div class="formule depart">
+        <span class="badge">Le point de départ</span>
+        <h2>Origine</h2>
+        <div class="prix">299 €<small>puis 99 €/mois, sans engagement de durée</small></div>
+        <ul>
+          <li>La création du site — celui de la maquette — et sa mise en ligne : 299 €.</li>
+          <li>Puis 99 €/mois : hébergement, nom de domaine, et le suivi léger — modifications simples (horaires, prix, photos), sauvegardes, petites corrections.</li>
+          <li>Compris au départ : les 5 guides pas-à-pas et l'étude d'économies sous 48 h.</li>
+        </ul>
+        <p class="note-f">L'abonnement s'arrête sur simple demande.</p>
+      </div>
+
+      <div class="formule">
+        <h2>Singulier</h2>
+        <div class="prix">+200 €/mois<small>en plus de la formule Origine</small></div>
+        <ul>
+          <li>Tout Origine, plus le kit physique façonné par notre atelier partenaire :</li>
+          <li>carte NFC prototype personnalisée — on approche le téléphone, votre site s'ouvre ;</li>
+          <li>textiles prototypes brodés à votre nom, déclinés en plusieurs couleurs au fil de l'abonnement ;</li>
+          <li>chevalet QR de comptoir.</li>
+        </ul>
+        <p class="note-f">Les prototypes évoluent pendant l'abonnement.</p>
+      </div>
+
+      <div class="formule everywhere">
+        <h2>Everywhere</h2>
+        <div class="prix">Sur mesure<small>de vive voix</small></div>
+        <ul>
+          <li>L'équipe habillée : textiles brodés pour chaque membre, tailles et couleurs au choix, réassort saisonnier.</li>
+          <li>La panoplie NFC complète : cartes pour toute l'équipe, plaque de comptoir, chevalets de table, stickers vitrine, porte-clés — dont « votre avis en un tap ».</li>
+          <li>Le site premium : animations signature de votre métier, modules avancés (réservation, commande, back-office selon le métier — pour votre enseigne : « Le Comptoir »), séance photo, pages supplémentaires.</li>
+          <li>Le suivi renforcé : statistiques mensuelles commentées, priorité de support, formation IA en visio chaque trimestre, étude d'économies renouvelée chaque année.</li>
+        </ul>
+        <p class="note-f">Le contenu exact se définit ensemble, selon votre enseigne.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="precisions">
+  <div class="conteneur">
+    <p class="sur-titre">Ce que cela signifie</p>
+    <p>Les montants affichés sont ceux de la gamme, tels quels. Chaque formule est sans engagement de durée : elle s'arrête sur simple demande.</p>
+    <p>Nous ne promettons ni chiffre d'affaires, ni volume de commandes : nous décrivons ce que chaque formule contient, et vous jugez sur pièce.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="conteneur">
+    Démonstration Everywhere — tout se valide ensemble, sans engagement.
+  </div>
+</footer>
+
+</body>
+</html>
