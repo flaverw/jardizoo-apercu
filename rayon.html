@@ -1,76 +1,221 @@
-<!-- cadenas-everywhere -->
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Accès protégé — Everywhere</title>
+<title>Rayon Chiens — Jardizoo (maquette de démonstration)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commun.css?v=2">
 <style>
-:root{--noir:#14110f;--or:#c9a24b;--creme:#f3ecdd}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;
- background:radial-gradient(120% 120% at 50% 0%,#241f1a,var(--noir));color:var(--creme);
- display:flex;align-items:center;justify-content:center;padding:24px}
-.card{max-width:420px;width:100%;text-align:center}
-.mark{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--or);margin-bottom:18px}
-.lock{font-size:40px;margin-bottom:14px}
-h1{font-size:22px;font-weight:600;line-height:1.25;margin-bottom:8px}
-p.sub{font-size:14px;color:#b9b0a0;margin-bottom:22px;line-height:1.5}
-form{display:flex;gap:8px;flex-direction:column}
-input{width:100%;background:#1c1814;border:1px solid rgba(201,162,75,.4);color:var(--creme);
- padding:14px 16px;font-size:16px;border-radius:8px;text-align:center;letter-spacing:.05em}
-input:focus{outline:none;border-color:var(--or)}
-button{background:var(--or);color:var(--noir);border:none;padding:14px;font-size:15px;font-weight:600;
- border-radius:8px;cursor:pointer;letter-spacing:.03em}
-button:hover{filter:brightness(1.08)}
-.err{color:#e6857a;font-size:13px;min-height:18px;margin-top:4px}
-.foot{margin-top:26px;font-size:11px;color:#7c7364;line-height:1.5}
-</style></head>
+.page-rayon{display:grid;grid-template-columns:240px 1fr;gap:30px;padding:30px 0 64px}
+.filtres{align-self:start;position:sticky;top:120px}
+.bloc-filtre{background:var(--blanc);border:1px solid var(--filet);border-radius:14px;padding:18px;margin-bottom:14px}
+.bloc-filtre h3{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--vert-fonce);margin-bottom:12px}
+.bloc-filtre label{display:flex;align-items:center;gap:9px;font-size:13.5px;padding:5px 0;cursor:pointer;color:var(--encre)}
+.bloc-filtre input[type=checkbox]{accent-color:var(--vert);width:15px;height:15px}
+.bloc-filtre .compte{margin-left:auto;font-size:11.5px;color:var(--gris)}
+.tete-rayon{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.tete-rayon h1{font-size:clamp(26px,3.4vw,36px)}
+.tete-rayon .nb{font-size:13.5px;color:var(--gris)}
+.note-rayon{background:var(--blanc);border:1px solid var(--filet);border-left:4px solid var(--seve);border-radius:12px;padding:13px 16px;font-size:13.5px;color:var(--gris);margin-bottom:22px}
+.note-rayon b{color:var(--vert-fonce)}
+@media (max-width:860px){
+  .page-rayon{grid-template-columns:1fr}
+  .filtres{position:static;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bloc-filtre{margin-bottom:0}
+}
+</style>
+</head>
 <body>
-<div class="card">
-  <div class="mark">Everywhere</div>
-  <div class="lock">&#128274;</div>
-  <h1>Accès protégé</h1>
-  <p class="sub">Cette démonstration est réservée. Saisissez votre code d'accès pour la consulter.</p>
-  <form id="f"><input id="pw" type="password" placeholder="Code d'accès" autocomplete="off" autofocus>
-  <button type="submit">Entrer</button></form>
-  <div class="err" id="e"></div>
-  <div class="foot">Everywhere — cabinet d'accompagnement numérique.<br>Contenu chiffré. Un code par visiteur, communiqué par Everywhere.</div>
+
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement.</div>
+
+<header>
+  <div class="conteneur">
+    <div class="entete-haut">
+      <a class="logo" href="index.html" aria-label="Jardizoo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
+        Jardizoo
+      </a>
+      <div class="recherche" role="search">
+        <input type="search" placeholder="Chercher un produit, une marque… (démo)" aria-label="Recherche">
+        <button aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      </div>
+      <div class="entete-actions">
+        <div class="mon-magasin" title="Choisir mon magasin (démonstration)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1c4d33" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Mon magasin : <b>Illies</b>
+        </div>
+        <div class="action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6.5 8-6.5s8 2.5 8 6.5"/></svg><span>Compte</span></div>
+        <a class="action" href="panier.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.5 13h-15L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg><span>Panier</span></a>
+      </div>
+    </div>
+    <nav class="rayons-nav" aria-label="Rayons">
+      <ul>
+        <li><a href="rayon.html" class="courant">Chiens</a></li>
+        <li><a href="index.html#rayons">Chats</a></li>
+        <li><a href="index.html#rayons">Oiseaux</a></li>
+        <li><a href="index.html#rayons">Rongeurs</a></li>
+        <li><a href="index.html#rayons">Reptiles</a></li>
+        <li><a href="index.html#rayons">Poissons</a></li>
+        <li><a href="index.html#rayons">Basse-cour</a></li>
+        <li><a href="index.html#rayons">Bassins de jardin</a></li>
+        <li><a href="index.html#rayons">Jardinerie</a></li>
+        <li><a href="index.html#rayons" class="offres">Bonnes offres</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="conteneur">
+  <p class="ariane"><a href="index.html">Accueil</a><span class="sep">›</span><span>Chiens</span></p>
+
+  <div class="page-rayon">
+    <aside class="filtres" aria-label="Filtres">
+      <div class="bloc-filtre">
+        <h3>Sous-rayon</h3>
+        <label><input type="checkbox" class="f-cat" value="alimentation" checked>Alimentation<span class="compte">3</span></label>
+        <label><input type="checkbox" class="f-cat" value="couchage" checked>Couchage &amp; confort<span class="compte">2</span></label>
+        <label><input type="checkbox" class="f-cat" value="promenade" checked>Promenade<span class="compte">2</span></label>
+        <label><input type="checkbox" class="f-cat" value="jeux" checked>Jeux &amp; éducation<span class="compte">1</span></label>
+        <label><input type="checkbox" class="f-cat" value="hygiene" checked>Hygiène &amp; soin<span class="compte">1</span></label>
+      </div>
+      <div class="bloc-filtre">
+        <h3>Disponibilité</h3>
+        <label><input type="checkbox" id="f-stock">En stock à Illies seulement</label>
+      </div>
+    </aside>
+
+    <div>
+      <div class="tete-rayon">
+        <h1>Chiens</h1>
+        <span class="nb"><b id="nb-visibles">9</b> produits affichés — données fictives</span>
+      </div>
+      <p class="note-rayon">La disponibilité affichée est celle de <b>votre magasin : Illies</b>. Chaque article se réserve en ligne et se retire en magasin, souvent sous une heure aux heures d'ouverture.</p>
+
+      <div class="grille-produits" id="liste-produits">
+        <article class="produit" data-cat="alimentation" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 38V22l14-10 14 10v16H10Z"/><path d="M20 38v-9h8v9"/></svg></div>
+          <div class="corps">
+            <span class="marque">Alimentation</span>
+            <h3><a href="produit.html">Croquettes adulte 12 kg</a></h3>
+            <p class="prix">33 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 14 sacs</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="alimentation" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 38V18l12-8 12 8v20H12Z"/><path d="M18 38v-7h12v7"/></svg></div>
+          <div class="corps">
+            <span class="marque">Alimentation</span>
+            <h3><a href="produit.html">Croquettes chiot 4 kg</a></h3>
+            <p class="prix">22 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 9 sacs</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="alimentation" data-stock="non">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="10" y="16" width="28" height="20" rx="3"/><path d="M10 24h28M24 16v-4"/></svg></div>
+          <div class="corps">
+            <span class="marque">Alimentation</span>
+            <h3><a href="produit.html">Pâtée sans céréales ×12</a></h3>
+            <p class="prix">17,5 €<small> — exemple</small></p>
+            <p class="stock-ligne epuise"><span class="pastille"></span>Épuisé ici — en stock à Louvroil</p>
+            <a class="btn indispo" href="produit.html">Voir dans un autre magasin</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="couchage" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 32c0-8 7-14 16-14s16 6 16 14v4H8v-4Z"/><path d="M16 30c2-3 5-5 8-5s6 2 8 5"/></svg></div>
+          <div class="corps">
+            <span class="marque">Couchage &amp; confort</span>
+            <h3><a href="produit.html">Panier moelleux taille L</a></h3>
+            <p class="prix">44 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 6</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="couchage" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 36V20l14-9 14 9v16H10Z"/><path d="M18 36v-9h12v9M24 11v6"/></svg></div>
+          <div class="corps">
+            <span class="marque">Couchage &amp; confort</span>
+            <h3><a href="produit.html">Niche bois toit bitumé</a></h3>
+            <p class="prix">222 €<small> — exemple</small></p>
+            <p class="stock-ligne faible"><span class="pastille"></span>Plus que 1 à Illies</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="promenade" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 10c8 2 16 10 20 24"/><circle cx="12" cy="9" r="4"/><path d="M30 30c2-1 5-1 6 1s0 5-3 5-4-4-3-6Z"/></svg></div>
+          <div class="corps">
+            <span class="marque">Promenade</span>
+            <h3><a href="produit.html">Laisse cuir 1,2 m</a></h3>
+            <p class="prix">22 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 11</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="promenade" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22c0-6 5-10 12-10s12 4 12 10-5 12-12 12-12-6-12-12Z"/><path d="M12 24h24M24 12v22"/></svg></div>
+          <div class="corps">
+            <span class="marque">Promenade</span>
+            <h3><a href="produit.html">Harnais réglable M</a></h3>
+            <p class="prix">33 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 8</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="jeux" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 24c4-8 10-12 14-12s10 4 14 12c-4 8-10 12-14 12s-10-4-14-12Z"/><path d="M17 20c2 3 2 5 0 8m14-8c-2 3-2 5 0 8"/></svg></div>
+          <div class="corps">
+            <span class="marque">Jeux &amp; éducation</span>
+            <h3><a href="produit.html">Jouet corde à nœuds</a></h3>
+            <p class="prix">5,5 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 24</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+        <article class="produit" data-cat="hygiene" data-stock="oui">
+          <div class="visuel"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 12h12v6l4 16c0 3-2 4-4 4H18c-2 0-4-1-4-4l4-16v-6Z"/><path d="M18 18h12"/></svg></div>
+          <div class="corps">
+            <span class="marque">Hygiène &amp; soin</span>
+            <h3><a href="produit.html">Shampoing poils longs 250 ml</a></h3>
+            <p class="prix">8,8 €<small> — exemple</small></p>
+            <p class="stock-ligne"><span class="pastille"></span>En stock à Illies — 15</p>
+            <a class="btn" href="produit.html">Réserver — retrait 1 h</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
 </div>
+
+<footer>
+  <div class="conteneur">
+    <div class="pied-bas" style="border:none;padding:0">
+      <span>Maquette de démonstration — Everywhere Digital. Données et prix fictifs, formulaires inactifs.</span>
+      <span>Aucun suivi, aucun cookie.</span>
+    </div>
+  </div>
+</footer>
+
 <script>
-(function(){
- var D={"v":1,"iters":210000,"iv":"QxUAfJ80I54T5las","ct":"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","wraps":[{"role":"client","salt":"6TQVLyy8PkC3nTee0Qy7wA==","iv":"+u7idRxogGj+ylSi","wrapped":"UxwkygFPgXPXpqNBkgdXIvtgGXd7dEEZdB8z3yptAO4YI7OChwVJE66zrEQqZmXE"}]};
- var dec=function(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;};
- var enc=new TextEncoder();
- async function derive(pw,salt){
-  var km=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);
-  return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:D.iters,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
- }
- async function tryUnlock(pw){
-  for(var i=0;i<D.wraps.length;i++){
-   var w=D.wraps[i];
-   try{
-    var wk=await derive(pw,dec(w.salt));
-    var ckRaw=new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:dec(w.iv)},wk,dec(w.wrapped)));
-    var ck=await crypto.subtle.importKey('raw',ckRaw,'AES-GCM',false,['decrypt']);
-    var html=new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:dec(D.iv)},ck,dec(D.ct)));
-    return {ok:true,role:w.role,html:html};
-   }catch(e){}
-  }
-  return {ok:false};
- }
- function render(html){document.open();document.write(html);document.close();}
- async function boot(){
-  var pw=null;try{pw=sessionStorage.getItem('ew_pass');}catch(e){}
-  if(pw){var r=await tryUnlock(pw);if(r.ok){render(r.html);return;}}
-  document.getElementById('f').addEventListener('submit',async function(ev){
-   ev.preventDefault();
-   var v=document.getElementById('pw').value;
-   document.getElementById('e').textContent='';
-   var r=await tryUnlock(v);
-   if(r.ok){try{sessionStorage.setItem('ew_pass',v);}catch(e){}render(r.html);}
-   else{document.getElementById('e').textContent='Code incorrect.';document.getElementById('pw').select();}
+// filtres fonctionnels (démo)
+function filtrer(){
+  const cats=[...document.querySelectorAll('.f-cat:checked')].map(c=>c.value);
+  const stockSeul=document.getElementById('f-stock').checked;
+  let n=0;
+  document.querySelectorAll('#liste-produits .produit').forEach(p=>{
+    const ok=cats.includes(p.dataset.cat)&&(!stockSeul||p.dataset.stock==='oui');
+    p.style.display=ok?'':'none';
+    if(ok)n++;
   });
- }
- if(!crypto||!crypto.subtle){document.getElementById('e').textContent='Navigateur non compatible.';}else{boot();}
-})();
+  document.getElementById('nb-visibles').textContent=n;
+}
+document.querySelectorAll('.f-cat, #f-stock').forEach(c=>c.addEventListener('change',filtrer));
+filtrer();
 </script>
-</body></html>
+</body>
+</html>
