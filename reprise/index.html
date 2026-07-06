@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Jardizoo — maquette de démonstration (version vitrine)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══ Jardizoo — déclinaison vitrine classique (maquette de démonstration) ═══ */
+:root{
+  --vert:#1c4d33;
+  --vert-fonce:#123723;
+  --vert-clair:#2e6b47;
+  --seve:#7fae62;
+  --terre:#b5643a;
+  --ivoire:#f7f4ec;
+  --blanc:#fffdf8;
+  --encre:#22271f;
+  --gris:#6b7263;
+  --filet:#e3ddcd;
+  --ombre:0 10px 30px rgba(28,52,35,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--encre);background:var(--ivoire);line-height:1.6;font-size:16px}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.15;color:var(--vert-fonce)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.conteneur{max-width:1080px;margin:0 auto;padding:0 20px}
+
+.demo-bandeau{background:var(--encre);color:#f0ead8;text-align:center;font-size:12.5px;padding:7px 14px;letter-spacing:.03em}
+.demo-bandeau strong{color:#ffd9a0;font-weight:600}
+
+/* — entête classique — */
+header{background:var(--blanc);border-bottom:1px solid var(--filet);position:sticky;top:0;z-index:50}
+.entete{display:flex;align-items:center;gap:26px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:25px;color:var(--vert-fonce);font-weight:600}
+.logo svg{width:32px;height:32px}
+.logo small{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--gris);font-weight:400;letter-spacing:.04em;line-height:1.3}
+nav.principale{margin-left:auto}
+nav.principale ul{display:flex;gap:2px;list-style:none}
+nav.principale a{display:block;padding:9px 12px;font-size:13.5px;font-weight:500;border-radius:9px;white-space:nowrap}
+nav.principale a:hover{background:var(--ivoire);color:var(--vert)}
+.tel-entete{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--vert-fonce);background:var(--ivoire);border:1.5px solid var(--filet);border-radius:10px;padding:8px 13px;white-space:nowrap}
+.tel-entete svg{width:15px;height:15px}
+
+/* — héros vitrine (texte + photo cadrée, plus classique que la boutique) — */
+.heros{background:var(--blanc);border-bottom:1px solid var(--filet)}
+.heros-int{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:64px 0 68px}
+.heros h1{font-size:clamp(28px,4.4vw,44px);margin-bottom:16px}
+.heros h1 em{font-style:italic;color:var(--vert-clair)}
+.filet-germe{display:block;margin:4px 0 14px}
+.filet-germe path{stroke:var(--seve);stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:germer 1.6s .4s ease forwards}
+@keyframes germer{to{stroke-dashoffset:0}}
+.heros p.sous{color:var(--gris);max-width:50ch;margin-bottom:26px}
+.cta-groupe{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:12px;font-weight:600;font-size:15px;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;border:none;font-family:inherit}
+.btn-vert{background:var(--vert);color:#fff}
+.btn-vert:hover{background:var(--vert-clair);transform:translateY(-2px)}
+.btn-discret{background:var(--blanc);color:var(--vert-fonce);border:1.5px solid var(--filet)}
+.btn-discret:hover{border-color:var(--seve);transform:translateY(-2px)}
+.heros-preuves{display:flex;gap:24px;margin-top:30px;flex-wrap:wrap}
+.preuve{font-size:13px;color:var(--gris);display:flex;align-items:center;gap:8px}
+.preuve svg{width:16px;height:16px;flex:none;color:var(--vert)}
+.heros-photo{position:relative}
+.heros-photo img{border-radius:22px;width:100%;aspect-ratio:4/3.4;object-fit:cover;box-shadow:var(--ombre)}
+.heros-photo .etiquette{position:absolute;left:18px;bottom:18px;background:var(--blanc);border:1px solid var(--filet);border-radius:12px;padding:10px 15px;font-size:12.5px;box-shadow:var(--ombre)}
+.heros-photo .etiquette b{display:block;font-size:13.5px;color:var(--vert-fonce)}
+
+/* — passerelle jardizoo.fr → amijardin.fr — */
+.passerelle{background:var(--vert-fonce);color:#dbe7cc}
+.passerelle-int{display:flex;align-items:center;justify-content:center;gap:12px;padding:13px 0;font-size:13.5px;flex-wrap:wrap;text-align:center}
+.passerelle b{color:var(--ivoire);font-weight:600}
+.passerelle .fleche{color:var(--seve);font-weight:600}
+
+/* — sections — */
+section{padding:62px 0}
+.sur-titre{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--terre);font-weight:600;margin-bottom:10px}
+h2.titre-section{font-size:clamp(24px,3.2vw,33px);margin-bottom:14px}
+.intro-section{color:var(--gris);max-width:62ch;margin-bottom:34px}
+
+/* — univers — */
+.grille-univers{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:15px}
+.univers{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--vert-fonce)}
+.univers img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.univers:hover img{transform:scale(1.045)}
+.univers .voile-u{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(15,38,25,.82) 100%)}
+.univers .titre-u{position:absolute;left:15px;right:15px;bottom:12px;color:var(--ivoire)}
+.univers .titre-u b{display:block;font-family:'Fraunces',serif;font-size:18px;font-weight:500}
+.univers .titre-u span{font-size:12px;color:#d5e2c3}
+.note-animaux{margin-top:22px;background:var(--blanc);border:1px solid var(--filet);border-left:3px solid var(--seve);border-radius:12px;padding:14px 18px;font-size:13.5px;color:var(--gris);max-width:72ch}
+.note-animaux b{color:var(--vert-fonce)}
+
+/* — le drive — */
+.drive{background:var(--vert-fonce);color:var(--ivoire)}
+.drive h2{color:var(--ivoire)}
+.drive .intro-section{color:#c9d9b6}
+.drive-grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.dcarte{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px 22px}
+.dcarte svg{width:30px;height:30px;color:var(--seve);margin-bottom:12px}
+.dcarte h3{color:var(--ivoire);font-size:17px;margin-bottom:8px}
+.dcarte p{font-size:13.5px;color:#c9d9b6}
+.drive .mention{font-size:12px;color:#a8bd94;margin-top:20px}
+
+/* — conseils & services — */
+.conseils-grille{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:center}
+.conseils-grille img{border-radius:20px;width:100%;aspect-ratio:3/2.1;object-fit:cover;box-shadow:var(--ombre)}
+.liste-conseils{display:grid;gap:12px}
+.conseil-item{background:var(--blanc);border:1px solid var(--filet);border-radius:14px;padding:15px 18px;display:flex;gap:13px;align-items:flex-start}
+.conseil-item svg{width:20px;height:20px;flex:none;color:var(--vert);margin-top:2px}
+.conseil-item b{font-size:14.5px;display:block;color:var(--vert-fonce)}
+.conseil-item p{font-size:13px;color:var(--gris)}
+
+/* — module comptoir (inerte) — */
+.comptoir{background:var(--blanc);border-top:1px solid var(--filet);border-bottom:1px solid var(--filet)}
+.comptoir-grille{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.comptoir-texte p{color:var(--gris);font-size:14.5px;margin-bottom:14px;max-width:46ch}
+.formulaire{background:var(--ivoire);border:1px solid var(--filet);border-radius:20px;padding:28px;display:grid;gap:16px}
+.champ{display:grid;gap:6px}
+.champ label{font-size:13px;font-weight:600;color:var(--vert-fonce)}
+.champ select,.champ input,.champ textarea{font:inherit;font-size:14px;border:1.5px solid var(--filet);border-radius:10px;padding:10px 12px;background:var(--blanc);color:var(--encre);width:100%}
+.champ textarea{resize:vertical;min-height:88px}
+.champ select:focus,.champ input:focus,.champ textarea:focus{outline:2px solid var(--seve);outline-offset:1px}
+.deux-champs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.formulaire .note-form{font-size:12px;color:var(--gris)}
+.confirmation{display:none;background:var(--ivoire);border:1.5px solid var(--seve);border-radius:20px;padding:32px;text-align:center}
+.confirmation.visible-conf{display:block}
+.confirmation strong{display:block;font-family:'Fraunces',serif;font-size:21px;color:var(--vert-fonce);margin-bottom:10px}
+.confirmation p{font-size:13.5px;color:var(--gris);max-width:44ch;margin:0 auto}
+
+/* — magasins — */
+.grille-magasins{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.magasin{background:var(--blanc);border:1px solid var(--filet);border-radius:16px;padding:22px}
+.magasin h3{font-size:17.5px;margin-bottom:6px}
+.magasin p{font-size:13.5px;color:var(--gris);margin-bottom:4px}
+.magasin .tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--vert);background:#eaf0dd;border-radius:999px;padding:3px 10px;margin-bottom:10px;font-weight:600}
+.note-magasins{font-size:12.5px;color:var(--gris);margin-top:18px}
+
+/* — avis — */
+.avis-bloc{display:flex;align-items:center;gap:34px;flex-wrap:wrap;background:var(--blanc);border:1px solid var(--filet);border-radius:20px;padding:32px}
+.note-avis{text-align:center}
+.note-avis .chiffre{font-family:'Fraunces',serif;font-size:46px;color:var(--vert-fonce);line-height:1}
+.note-avis .etoiles{color:#d9a13c;font-size:17px;letter-spacing:2px}
+.note-avis .detail{font-size:12.5px;color:var(--gris);margin-top:6px}
+.avis-citations{flex:1;min-width:260px;display:grid;gap:12px}
+.citation{font-size:14px;border-left:3px solid var(--seve);padding-left:14px;color:var(--encre)}
+.citation small{display:block;color:var(--gris);margin-top:3px}
+
+/* — pied — */
+footer{background:var(--vert-fonce);color:#b9c9a8;padding:48px 0 28px;font-size:13.5px}
+.pied-grille{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:34px;margin-bottom:34px}
+footer h4{color:var(--ivoire);font-size:14px;margin-bottom:12px;font-weight:600}
+footer li{list-style:none;margin-bottom:8px}
+footer a:hover{color:var(--ivoire)}
+.pied-bas{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px}
+
+/* — apparitions — */
+.apparait{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.apparait.visible{opacity:1;transform:none}
+
+/* — commutateur de version — */
+.commutateur{position:fixed;right:16px;bottom:16px;z-index:80;display:inline-flex;align-items:center;gap:8px;background:var(--blanc);color:var(--vert-fonce);border:1px solid var(--filet);border-radius:999px;padding:9px 15px;font-size:12.5px;font-weight:600;box-shadow:0 6px 20px rgba(28,52,35,.18);transition:transform .2s,box-shadow .2s}
+.commutateur:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(28,52,35,.25)}
+.commutateur svg{width:14px;height:14px;flex:none;color:var(--vert)}
+.commutateur small{font-weight:400;color:var(--gris)}
+
+@media (prefers-reduced-motion: reduce){
+  .apparait{opacity:1;transform:none;transition:none}
+  .filet-germe path{animation:none !important;stroke-dashoffset:0 !important}
+}
+@media (max-width:920px){
+  nav.principale{display:none}
+  .heros-int{grid-template-columns:1fr;padding:46px 0 52px}
+  .conseils-grille,.comptoir-grille{grid-template-columns:1fr}
+  .pied-grille{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  section{padding:44px 0}
+  .deux-champs{grid-template-columns:1fr}
+  .tel-entete span{display:none}
+  .commutateur{right:12px;bottom:12px;padding:8px 13px}
+  .commutateur small{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bandeau"><strong>Maquette de démonstration</strong> — proposée par Everywhere Digital. Aucun engagement, aucune commande réelle, aucun paiement. Photos d'illustration.</div>
+
+<header>
+  <div class="conteneur">
+    <div class="entete">
+      <a class="logo" href="#" aria-label="Jardizoo">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V16" stroke="#1c4d33" stroke-width="2.5" stroke-linecap="round"/><path d="M20 22c-7 0-11-5-11-11 6 0 11 4 11 11Z" fill="#2e6b47"/><path d="M20 16c7 0 11-5 11-11-6 0-11 4-11 11Z" fill="#7fae62"/></svg>
+        <span>Jardizoo<small>Animalerie &amp; jardinerie — Hauts-de-France</small></span>
+      </a>
+      <nav class="principale" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#univers">Les univers</a></li>
+          <li><a href="#drive">Le drive</a></li>
+          <li><a href="#conseils">Conseils &amp; services</a></li>
+          <li><a href="#comptoir">Au comptoir</a></li>
+          <li><a href="#magasins">Nos magasins</a></li>
+        </ul>
+      </nav>
+      <span class="tel-entete" title="Numéro de la boutique de Seclin (démonstration)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+        <span>03&nbsp;20&nbsp;32&nbsp;82&nbsp;40</span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- HÉROS VITRINE -->
+<div class="heros">
+  <div class="conteneur heros-int">
+    <div>
+      <h1>La jardinerie et l'animalerie,<br><em>à côté de chez vous.</em></h1>
+      <svg class="filet-germe" width="200" height="14" viewBox="0 0 200 14" aria-hidden="true"><path pathLength="1" d="M2 10 C 36 10, 55 4, 100 7 S 172 12, 198 6"/></svg>
+      <p class="sous">Jardizoo, ce sont des magasins dans les Hauts-de-France : des allées de plantes, des rayons pour chaque animal, des conseils au comptoir. Cette page les présente, simplement — et la boutique en ligne prolonge les rayons.</p>
+      <div class="cta-groupe">
+        <a class="btn btn-vert" href="#magasins"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Trouver mon magasin</a>
+        <a class="btn btn-discret" href="#comptoir">Poser une question au comptoir</a>
+      </div>
+      <div class="heros-preuves">
+        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 2 2.9 6.3 6.6.6-5 4.5 1.5 6.6L12 16.5 6 20l1.5-6.6-5-4.5 6.6-.6L12 2Z"/></svg>4,3/5 — plus de 1&nbsp;200 avis Google</span>
+        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>Retrait drive en 1&nbsp;h</span>
+        <span class="preuve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Neuf univers en rayon</span>
+      </div>
+    </div>
+    <div class="heros-photo">
+      <img src="../assets/hero.webp" alt="La serre du magasin au matin — photo d'illustration" fetchpriority="high">
+      <div class="etiquette"><b>Sept points de vente</b>Hauts-de-France &amp; Somme</div>
+    </div>
+  </div>
+</div>
+
+<!-- PASSERELLE -->
+<div class="passerelle">
+  <div class="conteneur passerelle-int">
+    <span><b>jardizoo.fr</b> devient <b>amijardin.fr</b></span>
+    <span class="fleche" aria-hidden="true">→</span>
+    <span>même maison, mêmes magasins : Ami Jardin est la boutique en ligne de l'enseigne Jardizoo.</span>
+  </div>
+</div>
+
+<!-- UNIVERS -->
+<section id="univers">
+  <div class="conteneur">
+    <p class="sur-titre apparait">Dans les allées</p>
+    <h2 class="titre-section apparait">Neuf univers, comme en magasin</h2>
+    <p class="intro-section apparait">Les rayons que vous connaissez : l'alimentation, l'équipement et le soin pour chaque animal, et la jardinerie pour le reste de la maison.</p>
+    <div class="grille-univers">
+      <figure class="univers apparait"><img src="../assets/u-chien.webp" alt="Rayon chiens" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Chiens</b><span>Croquettes, couchage, promenade</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-chat.webp" alt="Rayon chats" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Chats</b><span>Alimentation, litière, arbres</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-oiseaux.webp" alt="Rayon oiseaux" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Oiseaux</b><span>Graines, cages, volières</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-rongeurs.webp" alt="Rayon rongeurs" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Rongeurs</b><span>Foin, cages, hygiène</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-reptiles.webp" alt="Rayon reptiles" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Reptiles</b><span>Terrariums, chauffage, UV</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-poissons.webp" alt="Rayon aquariophilie" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Poissons</b><span>Aquariums, filtration, soins</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-bassecour.webp" alt="Rayon basse-cour" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Basse-cour</b><span>Poulaillers, aliments</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-bassin.webp" alt="Rayon bassins de jardin" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Bassins de jardin</b><span>Pompes, bâches, plantes d'eau</span></figcaption></figure>
+      <figure class="univers apparait"><img src="../assets/u-jardinerie.webp" alt="Rayon jardinerie" loading="lazy"><span class="voile-u"></span><figcaption class="titre-u"><b>Jardinerie</b><span>Plantes, terreau, outillage</span></figcaption></figure>
+    </div>
+    <p class="note-animaux apparait"><b>Les animaux ne se vendent pas en ligne.</b> Ils se rencontrent en magasin, avec les conseils de l'équipe — c'est là que se fait le bon choix, pour eux comme pour vous.</p>
+  </div>
+</section>
+
+<!-- LE DRIVE -->
+<section class="drive" id="drive">
+  <div class="conteneur">
+    <p class="sur-titre apparait" style="color:#cfe3b8">Le drive</p>
+    <h2 class="titre-section apparait">Commandé en ligne, retiré en magasin</h2>
+    <p class="intro-section apparait">La boutique en ligne prolonge les rayons : vous commandez depuis chez vous, le magasin prépare, vous retirez au comptoir.</p>
+    <div class="drive-grille">
+      <div class="dcarte apparait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+        <h3>Vous commandez</h3>
+        <p>Sur la boutique en ligne amijardin.fr, au fil des mêmes univers qu'en magasin.</p>
+      </div>
+      <div class="dcarte apparait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+        <h3>Retrait en 1&nbsp;h</h3>
+        <p>Retrait de la commande en une heure, en drive — le service annoncé de la boutique.</p>
+      </div>
+      <div class="dcarte apparait">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 7 4 7"/><path d="M20 12H4"/><path d="M20 17H4"/><circle cx="8" cy="7" r="1.6" fill="currentColor"/><circle cx="16" cy="12" r="1.6" fill="currentColor"/><circle cx="10" cy="17" r="1.6" fill="currentColor"/></svg>
+        <h3>Prix drive −5&nbsp;%</h3>
+        <p>Les prix drive sont affichés à −5&nbsp;%, tels qu'indiqués sur la boutique en ligne.</p>
+      </div>
+    </div>
+    <p class="mention apparait">Démonstration — services tels qu'annoncés par la boutique en ligne de l'enseigne ; données fictives sur cette maquette.</p>
+  </div>
+</section>
+
+<!-- CONSEILS & SERVICES -->
+<section id="conseils">
+  <div class="conteneur">
+    <p class="sur-titre apparait">Conseils &amp; services</p>
+    <h2 class="titre-section apparait">Ce qui se passe au comptoir</h2>
+    <p class="intro-section apparait">Ce que les clients citent le plus dans leurs avis : le choix, le rayon plantes, l'accueil et les conseils. Voilà ce que le magasin sait faire, et que cette page met enfin en avant.</p>
+    <div class="conseils-grille">
+      <img class="apparait" src="../assets/atelier.webp" alt="L'établi du magasin — photo d'illustration" loading="lazy">
+      <div class="liste-conseils">
+        <div class="conseil-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 10h8M8 14h5"/><path d="M21 12a9 9 0 1 1-4.2-7.6"/></svg>
+          <span><b>Le conseil au comptoir</b><p>Une question sur l'alimentation, un doute sur une plante : l'équipe répond en rayon, avec le produit sous la main.</p></span></div>
+        <div class="conseil-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20v-8m0 2c-4 0-6.5-2.8-6.5-7C9.5 7 12 9.8 12 14Zm0-3c4 0 6.5-2.8 6.5-7-4 0-6.5 2.8-6.5 7Z"/><path d="M7 20h10"/></svg>
+          <span><b>Le rayon plantes</b><p>Des allées de plantes d'intérieur et d'extérieur — le rayon que les avis citent en premier.</p></span></div>
+        <div class="conseil-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span><b>Les animaux, en magasin</b><p>Poissons, oiseaux, rongeurs, reptiles : ils se découvrent sur place, jamais en ligne — et l'équipe accompagne l'adoption.</p></span></div>
+        <div class="conseil-item apparait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 7h12l1.5 13h-15L6 7Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+          <span><b>Le drive au magasin</b><p>Votre commande en ligne vous attend au comptoir de retrait — sans refaire les allées si vous êtes pressé.</p></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE COMPTOIR (INERTE) -->
+<section class="comptoir" id="comptoir">
+  <div class="conteneur">
+    <div class="comptoir-grille">
+      <div class="comptoir-texte">
+        <p class="sur-titre apparait">Le module optionnel</p>
+        <h2 class="titre-section apparait">Une question ? Le comptoir vous répond.</h2>
+        <p class="apparait">Un produit est-il en rayon près de chez vous ? Une question avant de passer ? Vous écrivez, le comptoir du magasin choisi vous répond — par téléphone ou par courriel, comme vous préférez.</p>
+        <p class="apparait" style="font-size:12.5px">Sur cette maquette, le formulaire est une démonstration : rien n'est envoyé, aucune donnée n'est conservée.</p>
+      </div>
+      <div>
+        <form class="formulaire apparait" id="form-comptoir">
+          <div class="deux-champs">
+            <div class="champ">
+              <label for="f-magasin">Votre magasin</label>
+              <select id="f-magasin" name="magasin">
+                <option>Illies</option>
+                <option>Louvroil</option>
+                <option>Hénin-Beaumont</option>
+                <option>Petite-Forêt</option>
+                <option>Saint-Pol-sur-Ternoise</option>
+                <option>Camon</option>
+                <option>Seclin (Ami Jardin)</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="f-objet">Votre demande</label>
+              <select id="f-objet" name="objet">
+                <option>Disponibilité d'un produit</option>
+                <option>Question au comptoir</option>
+              </select>
+            </div>
+          </div>
+          <div class="champ">
+            <label for="f-message">Votre message</label>
+            <textarea id="f-message" name="message" placeholder="Ex. : avez-vous des poulaillers 4 poules en rayon en ce moment ?"></textarea>
+          </div>
+          <div class="champ">
+            <label for="f-reponse">Où vous répondre</label>
+            <input id="f-reponse" name="reponse" type="text" placeholder="Téléphone ou courriel" autocomplete="off">
+          </div>
+          <button class="btn btn-vert" type="submit" style="justify-content:center">Envoyer au comptoir</button>
+          <p class="note-form">Formulaire inactif — maquette de démonstration.</p>
+        </form>
+        <div class="confirmation" id="conf-comptoir" role="status" aria-live="polite">
+          <strong>Démonstration — module optionnel</strong>
+          <p>Sur le site réel, votre message partirait au comptoir du magasin choisi, et vous seriez recontacté au canal indiqué. Ici, rien n'est envoyé.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAGASINS -->
+<section id="magasins">
+  <div class="conteneur">
+    <p class="sur-titre apparait">Nos magasins</p>
+    <h2 class="titre-section apparait">Sept points de vente, une même maison</h2>
+    <p class="intro-section apparait">Six magasins Jardizoo et la boutique Ami Jardin de Seclin, d'où vit aussi la vente en ligne.</p>
+    <div class="grille-magasins">
+      <div class="magasin apparait"><span class="tag">Jardizoo</span><h3>Illies</h3><p>5046 route Nationale, 59480 Illies</p><p>Horaires à confirmer</p></div>
+      <div class="magasin apparait"><span class="tag">Jardizoo</span><h3>Louvroil</h3><p>Centre commercial Auchan, Louvroil</p><p>03&nbsp;27&nbsp;67&nbsp;21&nbsp;06</p><p>Horaires à confirmer</p></div>
+      <div class="magasin apparait"><span class="tag">Jardizoo</span><h3>Hénin-Beaumont</h3><p>Avenue du Bord des Eaux, 62110 Hénin-Beaumont</p><p>Horaires à confirmer</p></div>
+      <div class="magasin apparait"><span class="tag">Jardizoo</span><h3>Petite-Forêt</h3><p>Site commercial Auchan, 59494 Petite-Forêt</p><p>Horaires à confirmer</p></div>
+      <div class="magasin apparait"><span class="tag">Jardizoo</span><h3>Saint-Pol-sur-Ternoise</h3><p>1 rue René Cassin, 62130 Saint-Pol-sur-Ternoise</p><p>Horaires à confirmer</p></div>
+      <div class="magasin apparait"><span class="tag">Jardizoo</span><h3>Camon</h3><p>Camon (Somme) — adresse à confirmer</p><p>Horaires à confirmer</p></div>
+      <div class="magasin apparait"><span class="tag">Ami Jardin</span><h3>Seclin</h3><p>3 rue Louis Larchez, 59113 Seclin</p><p>03&nbsp;20&nbsp;32&nbsp;82&nbsp;40 · contact@amijardin.fr</p><p>Horaires à confirmer</p></div>
+    </div>
+    <p class="note-magasins apparait">Adresses relevées dans les annuaires publics — horaires et coordonnées à confirmer par l'enseigne avant mise en ligne.</p>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section style="padding-top:0">
+  <div class="conteneur">
+    <div class="avis-bloc apparait">
+      <div class="note-avis">
+        <div class="chiffre">4,3<span style="font-size:20px;color:var(--gris)">/5</span></div>
+        <div class="etoiles" aria-hidden="true">★★★★☆</div>
+        <p class="detail">Plus de 1&nbsp;200 avis Google<br>sur les magasins de l'enseigne</p>
+      </div>
+      <div class="note-avis">
+        <div class="chiffre">4,6<span style="font-size:20px;color:var(--gris)">/5</span></div>
+        <div class="etoiles" aria-hidden="true">★★★★★</div>
+        <p class="detail">Plus de 110 avis Google<br>sur la boutique de Seclin</p>
+      </div>
+      <div class="avis-citations">
+        <p class="citation">« Grand choix, rayon plantes, animaux. »<small>— thèmes revenant dans les avis Google publics</small></p>
+        <p class="citation">« Personnel très agréable, conseils de qualité. »<small>— thèmes revenant dans les avis Google publics</small></p>
+        <p class="citation">« Choix et prix abordables. »<small>— thèmes revenant dans les avis Google publics</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="conteneur">
+    <div class="pied-grille">
+      <div>
+        <h4 style="font-family:'Fraunces',serif;font-size:20px">Jardizoo</h4>
+        <p>L'animalerie et la jardinerie de vos magasins des Hauts-de-France. En ligne, la boutique s'appelle Ami Jardin — même maison, mêmes magasins.</p>
+      </div>
+      <div><h4>Sur cette page</h4><ul><li><a href="#univers">Les univers</a></li><li><a href="#drive">Le drive</a></li><li><a href="#conseils">Conseils &amp; services</a></li><li><a href="#magasins">Nos magasins</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>03&nbsp;20&nbsp;32&nbsp;82&nbsp;40</li><li>contact@amijardin.fr</li><li>3 rue Louis Larchez, 59113 Seclin</li></ul></div>
+    </div>
+    <div class="pied-bas">
+      <span>Maquette de démonstration — Everywhere Digital. Données fictives, formulaires inactifs, photos d'illustration.</span>
+      <span>Aucun suivi, aucun cookie.</span>
+      <span><a href="../offre/" style="text-decoration:underline">L'offre — trois formules</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="commutateur" href="../" title="La même maquette, déclinée en boutique en ligne avec stock par magasin.">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 8h10m0 0-3-3m3 3-3 3M17 16H7m0 0 3-3m-3 3 3 3"/></svg>
+  Voir l'autre version <small>— boutique en ligne</small>
+</a>
+
+<script>
+// apparition au défilement
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.apparait').forEach(el=>obs.observe(el));
+// module comptoir — démonstration inerte : rien n'est envoyé
+document.getElementById('form-comptoir').addEventListener('submit',ev=>{
+  ev.preventDefault();
+  document.getElementById('form-comptoir').style.display='none';
+  document.getElementById('conf-comptoir').classList.add('visible-conf');
+});
+</script>
+</body>
+</html>

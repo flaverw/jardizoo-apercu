@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Jardizoo — carte NFC</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--vert:#1c4d33;--vert-fonce:#123723;--vert-clair:#2e6b47;--seve:#7fae62;--terre:#b5643a;--ivoire:#f7f4ec;--blanc:#fffdf8;--encre:#22271f;--filet:#e3ddcd}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#3a4438;font-family:'Inter',sans-serif;display:flex;flex-wrap:wrap;gap:26px;justify-content:center;align-items:center;min-height:100vh;padding:34px}
+.card{width:648px;height:408px;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+/* RECTO — vert profond, feuille */
+.recto{background:linear-gradient(135deg,var(--vert-fonce),var(--vert) 65%);color:var(--blanc)}
+.recto::after{content:"❦";position:absolute;right:-30px;bottom:-52px;font-size:230px;color:rgba(127,174,98,.18);transform:rotate(-12deg)}
+.recto .inner{position:relative;height:100%;padding:42px 48px;display:flex;flex-direction:column;justify-content:space-between;z-index:1}
+.recto .mk{display:flex;align-items:center;gap:13px}
+.recto .mk .leaf{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:24px}
+.recto h1{font-family:'Fraunces',serif;font-weight:700;font-size:38px;letter-spacing:.5px}
+.recto .st{font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--seve);margin-top:2px}
+.recto .slo{font-family:'Fraunces',serif;font-weight:600;font-size:23px;line-height:1.2}
+.recto .slo em{font-style:italic;color:var(--seve)}
+.recto .pied{display:flex;justify-content:space-between;align-items:flex-end;font-size:13.5px;color:#dfe8d9}
+.recto .tap{border:1.5px solid var(--seve);color:var(--seve);padding:8px 15px;font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;border-radius:8px}
+/* VERSO — ivoire, QR */
+.verso{background:var(--ivoire);color:var(--encre)}
+.verso .inner{height:100%;padding:36px 44px;display:flex;align-items:center;gap:34px}
+.verso .qr{width:198px;height:198px;background:#fff;border:1px solid var(--filet);border-radius:14px;padding:12px;flex:none;box-shadow:0 10px 26px rgba(34,39,31,.12)}
+.verso .qr img{width:100%;height:100%;display:block}
+.verso h2{font-family:'Fraunces',serif;font-weight:700;font-size:30px;line-height:1.05;color:var(--vert-fonce)}
+.verso p.appro{font-size:12px;color:var(--terre);letter-spacing:1.8px;text-transform:uppercase;margin:10px 0 16px}
+.verso .row{font-size:15.5px;margin:6px 0;display:flex;gap:10px;align-items:baseline}
+.verso .row b{color:var(--vert)}
+.tagp{position:fixed;bottom:10px;left:0;right:0;text-align:center;color:#c9d2c4;font-size:12px}
+@media print{body{background:#fff;gap:12mm}.tagp{display:none}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+  <div class="card recto">
+    <div class="inner">
+      <div class="mk"><div class="leaf">🌿</div><div><h1>Jardizoo</h1><div class="st">Jardinerie &amp; animalerie</div></div></div>
+      <div class="slo">La jardinerie et l'animalerie,<br><em>à côté de chez vous.</em></div>
+      <div class="pied"><div>Sept points de vente<br>Hauts-de-France &amp; Somme</div><div class="tap">◗ Approchez</div></div>
+    </div>
+  </div>
+  <div class="card verso">
+    <div class="inner">
+      <div class="qr"><img src="qr.png" alt="QR vers le site"></div>
+      <div>
+        <h2>Trouvez votre<br>magasin.</h2>
+        <p class="appro">Approchez votre téléphone</p>
+        <div class="row">🌱 <span>Neuf univers en rayon</span></div>
+        <div class="row">🛒 <span>Boutique en ligne — retrait <b>drive en 1 h</b></span></div>
+        <div class="row">💬 <span>Une question ? <b>Le comptoir</b> vous répond</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="tagp">Carte NFC / QR — recto-verso · 85,6 × 54 mm · QR → aperçu, à repointer vers le domaine propre après signature</div>
+</body>
+</html>
